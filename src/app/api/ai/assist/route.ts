@@ -891,16 +891,16 @@ function buildLexicalJson(blocks: any[]): any {
 }
 
 function getGoogleAI() {
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GEMINI_API_KEY
   if (!apiKey) {
-    throw new Error('GOOGLE_GENERATIVE_AI_API_KEY is not configured in environment variables')
+    throw new Error('GOOGLE_GENERATIVE_AI_API_KEY or GEMINI_API_KEY is not configured in environment variables')
   }
   return createGoogleGenerativeAI({ apiKey })
 }
 
 const PRIMARY_MODEL_ID = 'gemini-3.5-flash-lite'
 const FALLBACK_MODEL_ID = 'gemini-3.6-flash'
-const TERTIARY_MODEL_ID = 'gemini-2.5-flash'
+const TERTIARY_MODEL_ID = 'gemini-3.8-flash'
 
 async function generateAiText(systemPrompt: string, userPrompt: string): Promise<string> {
   const googleAI = getGoogleAI()
@@ -1195,7 +1195,7 @@ export async function POST(req: NextRequest) {
       result.content = buildLexicalJson(dedupedBlocks)
 
       // 6. Generate intelligent Gemini AI metadata (excerpt, tags, region, dateline, SEO) adhering to editorial rules
-      if (process.env.GOOGLE_GENERATIVE_AI_API_KEY && result.title) {
+      if ((process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.GEMINI_API_KEY) && result.title) {
         try {
           const rawParagraphsText = dedupedBlocks
             .filter((b: any) => b.type === 'paragraph')

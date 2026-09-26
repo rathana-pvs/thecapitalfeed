@@ -15,6 +15,8 @@ git pull origin main || { echo -e "${RED}❌ Error: git pull failed.${NC}"; exit
 # 2. Build production Next.js app
 echo "🔨 Building production Next.js app..."
 NODE_OPTIONS="--max-old-space-size=1536" npm run build
+cp -rn public .next/standalone/ 2>/dev/null || true
+cp -rn .next/static .next/standalone/.next/ 2>/dev/null || true
 
 # 3. Reload PM2 process
 echo "♻️  Reloading PM2 process..."
