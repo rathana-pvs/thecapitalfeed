@@ -51,6 +51,14 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'thecapitalfeed.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.thecapitalfeed.com',
+      },
+      {
+        protocol: 'https',
         hostname: 'uspolicyfeed.com',
       },
       {

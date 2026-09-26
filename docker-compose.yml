@@ -1,18 +1,18 @@
 services:
   db:
     image: postgres:15-alpine
-    container_name: uspolicyfeed-db
+    container_name: thecapitalfeed-db
     restart: always
     environment:
-      POSTGRES_USER: uspolicyfeed
-      POSTGRES_PASSWORD: uspolicyfeed_pass_123
-      POSTGRES_DB: uspolicyfeed
+      POSTGRES_USER: thecapitalfeed
+      POSTGRES_PASSWORD: thecapitalfeed_pass_123
+      POSTGRES_DB: thecapitalfeed
     ports:
       - '5436:5432'
     volumes:
-      - uspolicyfeed_db_data:/var/lib/postgresql/data
+      - thecapitalfeed_db_data:/var/lib/postgresql/data
 
 volumes:
-  uspolicyfeed_db_data:
+  thecapitalfeed_db_data:
 
 

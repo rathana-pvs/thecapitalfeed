@@ -124,7 +124,7 @@ export interface UserAuthOperations {
   };
 }
 /**
- * News articles published on US Policy Feed.
+ * News articles published on The Capital Feed.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles".

@@ -31,7 +31,7 @@ const seed = async () => {
 
   // 2. Ensure Admin User
   console.log('\n👤 Ensuring Admin User...')
-  const adminEmail = 'admin@uspolicyfeed.com'
+  const adminEmail = 'admin@thecapitalfeed.com'
   const adminPassword = 'adminpassword123'
 
   const existingAdmin = await payload.find({
@@ -45,7 +45,7 @@ const seed = async () => {
       data: {
         email: adminEmail,
         password: adminPassword,
-        name: 'US Policy Feed Admin',
+        name: 'The Capital Feed Admin',
         role: 'admin',
       },
     })
@@ -79,7 +79,7 @@ const seed = async () => {
       slug: author.slug,
       bio: author.bio || '',
       role: author.role || 'Staff Reporter',
-      email: author.email || 'news@uspolicyfeed.com',
+      email: author.email || 'news@thecapitalfeed.com',
     }
 
     if (existing.docs.length === 0) {

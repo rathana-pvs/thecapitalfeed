@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About Us — US Policy Feed',
+  title: 'About Us — The Capital Feed',
   description: 'Authoritative, independent reporting on US policy, governance, legislation, defense, and global affairs. Learn about our mission and editorial standards.',
 }
 
@@ -102,7 +102,7 @@ export default async function AboutPage() {
     <div className="bbc-container category-page">
       {/* ── HEADER BLOCK (Matching Category Title Block) ── */}
       <header className="category-title-block">
-        <span className="story-kicker">US Policy Feed · Independent Journalism</span>
+        <span className="story-kicker">The Capital Feed · Independent Journalism</span>
         <h1 className="category-title">About Us</h1>
         <p className="category-description">
           Authoritative reporting and non-partisan analysis on US policy, congress, governance, and global affairs.
@@ -138,7 +138,7 @@ export default async function AboutPage() {
           </div>
           <div className="lg:col-span-7 space-y-4 text-base text-[#1f1f1f] leading-relaxed">
             <p>
-              US Policy Feed was founded on a simple conviction: in a healthy society, citizens need access to verifiable, unbiased facts to evaluate legislation and hold power accountable.
+              The Capital Feed was founded on a simple conviction: in a healthy society, citizens need access to verifiable, unbiased facts to evaluate legislation and hold power accountable.
             </p>
             <p>
               In an era of algorithm-driven feeds and partisan amplification, we refuse to optimize for outrage. Every article, briefing, and analysis piece is authored and verified by journalists committed to truth, depth, and public interest.
@@ -249,7 +249,7 @@ export default async function AboutPage() {
           href="/contact"
           className="inline-block px-6 py-3 bg-[var(--brand-red)] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#900] transition-colors"
         >
-          Contact US Policy Feed
+          Contact The Capital Feed
         </Link>
       </div>
     </div>

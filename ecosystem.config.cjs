@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: 'uspolicyfeed',
-      cwd: '/var/www/uspolicyfeed',
+      name: 'thecapitalfeed',
+      cwd: '/var/www/thecapitalfeed',
       script: '.next/standalone/server.js',
       exec_mode: 'fork',
       instances: 1,

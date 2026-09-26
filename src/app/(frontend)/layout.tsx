@@ -3,7 +3,7 @@ import Script from 'next/script'
 import '@/app/globals.css'
 import Header from '@/components/layout/Header'
 import Navigation from '@/components/layout/Navigation'
-import LiveBanner from '@/components/layout/LiveBanner'
+import { BreakingTicker } from '@/components/layout/BreakingTicker'
 import Footer from '@/components/layout/Footer'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { NavigationProgress } from '@/components/layout/NavigationProgress'
@@ -19,8 +19,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 })
 
 const envUrl = process.env.NEXT_PUBLIC_SITE_URL
-const siteUrl = envUrl && !envUrl.includes('placeholder.com') ? envUrl : 'https://uspolicyfeed.com'
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
+const siteUrl = envUrl && !envUrl.includes('placeholder.com') ? envUrl : 'https://thecapitalfeed.com'
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'The Capital Feed'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -58,7 +58,6 @@ export default async function FrontendLayout({
   children: React.ReactNode
 }) {
   const breakingList = await getBreakingArticles()
-  const breakingStory = breakingList[0] || null
 
   return (
     <html lang="en" className={ibmPlexMono.variable}>
@@ -75,11 +74,8 @@ export default async function FrontendLayout({
         <NavigationProgress />
         <Header />
         <Navigation />
-        {breakingStory && (
-          <LiveBanner
-            headline={breakingStory.title}
-            slug={breakingStory.slug}
-          />
+        {breakingList && breakingList.length > 0 && (
+          <BreakingTicker articles={breakingList} />
         )}
         <main id="main-content" className="site-main">
           {children}

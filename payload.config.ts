@@ -32,7 +32,7 @@ import { Media } from './src/collections/Media'
 import { Users } from './src/collections/Users'
 import { ShareLinks } from './src/collections/ShareLinks'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://uspolicyfeed.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thecapitalfeed.com'
 
 export default buildConfig({
   sharp,
@@ -42,7 +42,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: '— US Policy Feed CMS',
+      titleSuffix: '— The Capital Feed CMS',
     },
     theme: 'dark',
   },
@@ -76,14 +76,14 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || 'postgresql://uspolicyfeed:uspolicyfeed_pass_123@localhost:5436/uspolicyfeed',
+      connectionString: process.env.DATABASE_URI || 'postgresql://thecapitalfeed:thecapitalfeed_pass_123@localhost:5436/thecapitalfeed',
     },
   }),
   plugins: [
     seoPlugin({
       collections: ['articles'],
       uploadsCollection: 'media',
-      generateTitle: ({ doc }: { doc: any }) => doc?.title ? `${doc.title} — US Policy Feed` : 'US Policy Feed',
+      generateTitle: ({ doc }: { doc: any }) => doc?.title ? `${doc.title} — The Capital Feed` : 'The Capital Feed',
       generateDescription: ({ doc }: { doc: any }) => doc?.excerpt || '',
     }),
     (config) => {
@@ -133,11 +133,15 @@ export default buildConfig({
   ],
   cors: [
     siteUrl,
+    'https://thecapitalfeed.com',
+    'https://www.thecapitalfeed.com',
     'https://uspolicyfeed.com',
     'https://www.uspolicyfeed.com',
   ],
   csrf: [
     siteUrl,
+    'https://thecapitalfeed.com',
+    'https://www.thecapitalfeed.com',
     'https://uspolicyfeed.com',
     'https://www.uspolicyfeed.com',
   ],

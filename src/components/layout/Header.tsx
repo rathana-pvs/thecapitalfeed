@@ -9,17 +9,19 @@ const menuGroups = [
     title: 'News & Policy',
     links: [
       ['Home', '/'],
+      ['US Policy', '/category/policy'],
+      ['Congress', '/category/congress'],
+      ['Economy', '/category/business'],
+      ['Defense & Security', '/category/defense'],
       ['World News', '/category/world'],
-      ['Business & Economy', '/category/business'],
-      ['Tech & Innovation', '/category/innovation'],
     ],
   },
   {
-    title: 'Features',
+    title: 'Sections',
     links: [
-      ['Culture', '/category/culture'],
-      ['Travel', '/category/travel'],
-      ['Earth & Climate', '/category/earth'],
+      ['Opinion & Ideas', '/category/opinion'],
+      ['Tech & Innovation', '/category/innovation'],
+      ['Climate & Earth', '/category/earth'],
       ['Watch & Listen', '/category/video'],
     ],
   },
@@ -28,14 +30,14 @@ const menuGroups = [
     links: [
       ['Live Updates', '/live'],
       ['Latest Video', '/category/video'],
-      ['Sport', '/category/sport'],
+      ['Article Archive', '/search'],
     ],
   },
   {
-    title: 'US Policy Feed',
+    title: 'The Capital Feed',
     links: [
       ['About Us', '/about'],
-      ['Contact', '/contact'],
+      ['Contact Newsroom', '/contact'],
       ['Editorial Policy', '/policy'],
       ['Privacy Policy', '/privacy'],
     ],
@@ -115,13 +117,13 @@ export default function Header() {
           </button>
         </div>
 
-        <Link href="/" className="site-brand-logo" aria-label="US Policy Feed homepage">
+        <Link href="/" className="site-brand-logo" aria-label="The Capital Feed homepage">
           <span className="brand-blocks">
-            <span>U</span>
-            <span>S</span>
+            <span>T</span>
+            <span>C</span>
             <span>F</span>
           </span>
-          <span className="brand-wordmark">US POLICY FEED</span>
+          <span className="brand-wordmark">THE CAPITAL FEED</span>
         </Link>
 
         <div className="masthead-right" aria-hidden="true" />
@@ -131,12 +133,12 @@ export default function Header() {
         <div className="search-drawer animate-in fade-in duration-200">
           <form className="bbc-container search-form" role="search" onSubmit={handleSearchSubmit}>
             <label className="skip-link" htmlFor="site-search">
-              Search US Policy Feed
+              Search The Capital Feed
             </label>
             <input
               id="site-search"
               type="search"
-              placeholder="Search policy, news, legislation, audio and video..."
+              placeholder="Search policy, governance, legislation, Congress, defense..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               autoFocus

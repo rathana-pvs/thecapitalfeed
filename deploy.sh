@@ -1,12 +1,12 @@
 #!/bin/bash
-# deploy.sh — US Policy Feed VPS Deployment Script
+# deploy.sh — The Capital Feed VPS Deployment Script
 set -e
 
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${GREEN}🚀 Deploying US Policy Feed...${NC}"
+echo -e "${GREEN}🚀 Deploying The Capital Feed...${NC}"
 
 # 1. Pull latest code
 echo "📥 Pulling latest code..."
@@ -20,15 +20,15 @@ cp -rn .next/static .next/standalone/.next/ 2>/dev/null || true
 
 # 3. Reload PM2 process
 echo "♻️  Reloading PM2 process..."
-pm2 reload uspolicyfeed
+pm2 reload thecapitalfeed || pm2 reload uspolicyfeed
 
 # 4. Health Check
 echo "🔥 Checking application health..."
 sleep 3
-if curl -s -f -H "Host: uspolicyfeed.com" http://localhost:3002 > /dev/null; then
+if curl -s -f -H "Host: thecapitalfeed.com" http://localhost:3002 > /dev/null; then
     echo -e "${GREEN}✓ Application updated successfully!${NC}"
 else
-    echo -e "${RED}⚠️ Warning: Health check returned non-200. Check pm2 logs uspolicyfeed${NC}"
+    echo -e "${RED}⚠️ Warning: Health check returned non-200. Check pm2 logs thecapitalfeed${NC}"
 fi
 
 echo -e "${GREEN}✅ Deployment complete!${NC}"

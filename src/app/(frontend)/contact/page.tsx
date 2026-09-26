@@ -3,30 +3,30 @@ import Link from 'next/link'
 import ContactForm from '@/components/contact/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact Us — US Policy Feed',
-  description: 'Reach our newsroom, investigative reporters, editors, or secure tip desk. Contact US Policy Feed.',
+  title: 'Contact Us — The Capital Feed',
+  description: 'Reach our newsroom, investigative reporters, editors, or secure tip desk. Contact The Capital Feed.',
 }
 
 export default async function ContactPage() {
   const departments = [
     {
       name: 'General Newsroom',
-      email: 'hello@uspolicyfeed.com',
+      email: 'hello@thecapitalfeed.com',
       desc: 'General comments, story queries, and general correspondence.',
     },
     {
       name: 'Press & Media Relations',
-      email: 'press@uspolicyfeed.com',
+      email: 'press@thecapitalfeed.com',
       desc: 'Broadcast appearances, interview requests with our analysts, and syndication.',
     },
     {
       name: 'Corrections & Fact-Checking',
-      email: 'corrections@uspolicyfeed.com',
+      email: 'corrections@thecapitalfeed.com',
       desc: 'Notices of potential inaccuracies, factual corrections, and editor inquiries.',
     },
     {
       name: 'Legal & Rights',
-      email: 'legal@uspolicyfeed.com',
+      email: 'legal@thecapitalfeed.com',
       desc: 'Copyright, syndication licensing, and privacy compliance.',
     },
   ]
@@ -36,7 +36,7 @@ export default async function ContactPage() {
       {/* ── HEADER / BREADCRUMB ──────────────────────── */}
       <div className="border-b-2 border-[var(--ink)] pb-4 mb-8">
         <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[var(--brand-red)] mb-2">
-          <span>US Policy Feed</span>
+          <span>The Capital Feed</span>
           <span>/</span>
           <span>Contact Newsroom</span>
         </div>
@@ -91,7 +91,7 @@ export default async function ContactPage() {
             <div className="space-y-2 text-xs font-mono bg-[var(--surface)] p-3 border border-[var(--line)]">
               <div><span className="font-bold text-[var(--ink)]">SIGNAL:</span> +1 (202) 555-0198 (Tips Only)</div>
               <div><span className="font-bold text-[var(--ink)]">PGP KEY:</span> 4A7B 9931 2C09 0E3F 2218 84E1 09B2 4D6F</div>
-              <div><span className="font-bold text-[var(--ink)]">SECURE MAIL:</span> tips@uspolicyfeed.com</div>
+              <div><span className="font-bold text-[var(--ink)]">SECURE MAIL:</span> tips@thecapitalfeed.com</div>
             </div>
           </div>
 

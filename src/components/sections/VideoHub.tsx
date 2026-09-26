@@ -8,8 +8,9 @@ interface VideoHubProps { articles: Article[]; }
 
 export default function VideoHub({ articles }: VideoHubProps) {
   const mediaArticles = articles.filter((article) => article.isVideo);
-  if (mediaArticles.length === 0) return null;
-  const [lead, ...rest] = mediaArticles;
+  const displayArticles = mediaArticles.length > 0 ? mediaArticles : articles.slice(0, 5);
+  if (displayArticles.length === 0) return null;
+  const [lead, ...rest] = displayArticles;
   const leadImage = getMediaUrl(lead?.coverImage);
 
   return (

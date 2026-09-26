@@ -108,7 +108,7 @@ export const Media: CollectionConfig = {
       name: 'alt',
       type: 'text',
       required: false,
-      defaultValue: 'US Policy Feed',
+      defaultValue: 'The Capital Feed',
       admin: {
         description: 'Alt text for accessibility and SEO',
       },

@@ -23,7 +23,7 @@ if [ ! -f .env ]; then
     echo -e "${RED}❌ Error: .env file is missing!${NC}"
     echo "Please copy your local .env file to the VPS root folder first."
     echo "Run this locally in a separate terminal tab:"
-    echo -e "${GREEN}scp /home/rathana/Desktop/uspolicyfeed/.env root@YOUR_VPS_IP:$(pwd)/.env${NC}"
+    echo -e "${GREEN}scp /home/rathana/Desktop/thecapitalfeed/.env root@YOUR_VPS_IP:$(pwd)/.env${NC}"
     exit 1
 fi
 echo -e "${GREEN}✓ .env file found.${NC}"
@@ -33,13 +33,13 @@ echo "🔒 Checking SSL Certificates..."
 # Find any volume matching "certbot_certs" to make it directory-agnostic
 VOLUME_NAME=$(docker volume ls -q | grep certbot_certs | head -n 1)
 
-if [ -n "$VOLUME_NAME" ] && docker run --rm -v "$VOLUME_NAME":/etc/letsencrypt alpine ls /etc/letsencrypt/live/uspolicyfeed.com/fullchain.pem >/dev/null 2>&1; then
+if [ -n "$VOLUME_NAME" ] && docker run --rm -v "$VOLUME_NAME":/etc/letsencrypt alpine ls /etc/letsencrypt/live/thecapitalfeed.com/fullchain.pem >/dev/null 2>&1; then
     echo -e "${GREEN}✓ SSL Certificates already exist. Skipping certificate generation.${NC}"
 else
     echo "⚠️ SSL Certificates not found. Initiating Let's Encrypt SSL Bootstrap..."
 
     # Fallback email for SSL registration
-    EMAIL="admin@uspolicyfeed.com"
+    EMAIL="admin@thecapitalfeed.com"
 
     echo "🛑 Ensuring port 80 is free (stopping Nginx)..."
     docker compose -f docker-compose.prod.yml down nginx || true
@@ -47,8 +47,8 @@ else
     echo "🔑 Requesting Let's Encrypt Certificate in Standalone Mode..."
     docker compose -f docker-compose.prod.yml run --rm -p 80:80 --entrypoint "certbot" certbot certonly \
       --standalone \
-      -d uspolicyfeed.com \
-      -d www.uspolicyfeed.com \
+      -d thecapitalfeed.com \
+      -d www.thecapitalfeed.com \
       --email "$EMAIL" \
       --agree-tos \
       --no-eff-email
@@ -58,4 +58,4 @@ fi
 echo "⚡ Starting all services..."
 docker compose -f docker-compose.prod.yml up -d db app nginx
 
-echo -e "${GREEN}✅ Setup complete! US Policy Feed is now running at https://uspolicyfeed.com${NC}"
+echo -e "${GREEN}✅ Setup complete! The Capital Feed is now running at https://thecapitalfeed.com${NC}"

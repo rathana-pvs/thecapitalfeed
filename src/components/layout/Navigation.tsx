@@ -6,14 +6,13 @@ import { usePathname } from 'next/navigation';
 
 const channels = [
   ['Home', '/'],
-  ['News', '/category/world'],
-  ['Sport', '/category/sport'],
-  ['Business', '/category/business'],
-  ['Technology', '/category/innovation'],
-  ['Culture', '/category/culture'],
-  ['Travel', '/category/travel'],
-  ['Earth', '/category/earth'],
-  ['Audio', '/category/video'],
+  ['US Policy', '/category/policy'],
+  ['Congress', '/category/congress'],
+  ['Economy', '/category/business'],
+  ['Defense', '/category/defense'],
+  ['World', '/category/world'],
+  ['Innovation', '/category/innovation'],
+  ['Opinion', '/category/opinion'],
   ['Video', '/category/video'],
 ] as const;
 

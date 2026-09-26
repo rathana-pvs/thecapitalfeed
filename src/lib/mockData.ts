@@ -35,10 +35,10 @@ export const mockAuthors: Author[] = [
       "id": "media-a2",
       "filename": "avatar.jpg",
       "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop",
-      "alt": "US Policy Feed Editorial Desk"
+      "alt": "The Capital Feed Editorial Desk"
     },
-    "twitter": "uspolicyfeed-editorial",
-    "email": "news@uspolicyfeed.com"
+    "twitter": "thecapitalfeed",
+    "email": "news@thecapitalfeed.com"
   }
 ]
 
@@ -1731,11 +1731,11 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "US Policy Feed Editorial Desk",
-      "slug": "uspolicyfeed-editorial",
+      "name": "The Capital Feed Editorial Desk",
+      "slug": "thecapitalfeed-editorial",
       "role": "Senior Newsroom Desk",
-      "bio": "Latest breaking political and international reporting from the US Policy Feed news team.",
-      "email": "news@uspolicyfeed.com"
+      "bio": "Latest breaking political and international reporting from The Capital Feed news team.",
+      "email": "news@thecapitalfeed.com"
     },
     "status": "published",
     "isBreaking": true,

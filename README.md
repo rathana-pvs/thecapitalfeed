@@ -1,4 +1,4 @@
-# US Policy Feed (USF)
+# The Capital Feed (TCF)
 
 An authoritative, high-performance digital news and policy platform engineered for real-time reporting on US governance, congressional legislation, White House policy, defense, and global affairs.
 
@@ -9,7 +9,7 @@ Built with **Next.js 15 (App Router)**, **Payload CMS v3**, **PostgreSQL**, and 
 ## 🌟 Key Features
 
 - **Editorial Layout & Design**:
-  - Distinctive 3-Block **`USF`** brand identity with clean, modern typography.
+  - Distinctive brand identity with clean, modern typography.
   - BBC-inspired masthead, breaking news ticker banner, and multi-channel navigation.
   - Compact, ranked **Most Read** sidebar and curated section blocks.
   - Full-width hero coverage, regional beat explorer, and video hub.
@@ -121,4 +121,4 @@ The Payload Admin Panel is accessible at `/admin`.
 
 ## 🔒 License & Copyright
 
-© 2026 **US Policy Brief**. All rights reserved.
+© 2026 **The Capital Feed**. All rights reserved.
