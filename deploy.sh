@@ -25,7 +25,7 @@ pm2 reload thecapitalfeed || pm2 reload uspolicyfeed
 # 4. Health Check
 echo "🔥 Checking application health..."
 sleep 3
-if curl -s -f -H "Host: thecapitalfeed.com" http://localhost:3002 > /dev/null; then
+if curl -s -f -H "Host: thecapitalfeed.com" http://localhost:3003 > /dev/null; then
     echo -e "${GREEN}✓ Application updated successfully!${NC}"
 else
     echo -e "${RED}⚠️ Warning: Health check returned non-200. Check pm2 logs thecapitalfeed${NC}"
