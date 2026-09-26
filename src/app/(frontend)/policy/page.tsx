@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Editorial Policy & Standards — US Policy Brief',
-  description: 'Editorial guidelines, verification processes, corrections policies, and journalistic standards at US Policy Brief.',
+  title: 'Editorial Policy & Standards — US Policy Feed',
+  description: 'Editorial guidelines, verification processes, corrections policies, and journalistic standards at US Policy Feed.',
 }
 
 export default async function PolicyPage() {
@@ -11,8 +11,8 @@ export default async function PolicyPage() {
     <div className="bbc-container py-8 md:py-12 max-w-[860px]">
       {/* ── HEADER / BREADCRUMB ──────────────────────── */}
       <div className="border-b-2 border-[var(--ink)] pb-4 mb-8">
-        <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[var(--bbc-red)] mb-2">
-          <span>US Policy Brief</span>
+        <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[var(--brand-red)] mb-2">
+          <span>US Policy Feed</span>
           <span>/</span>
           <span>Editorial Standards & Governance</span>
         </div>
@@ -20,7 +20,7 @@ export default async function PolicyPage() {
           Editorial Policy & Publishing Standards
         </h1>
         <p className="mt-4 text-lg text-[var(--muted)] leading-relaxed">
-          US Policy Brief adheres to rigorous journalistic integrity, factual accuracy, transparent sourcing, and non-partisan analysis.
+          US Policy Feed adheres to rigorous journalistic integrity, factual accuracy, transparent sourcing, and non-partisan analysis.
         </p>
       </div>
 
@@ -33,7 +33,7 @@ export default async function PolicyPage() {
             1. Fact-Checking and Verification Process
           </h2>
           <p className="mb-3">
-            Every article, analysis piece, and breaking news report published on US Policy Brief undergoes multi-tier editorial review. Our reporters verify claims against primary documentation, including:
+            Every article, analysis piece, and breaking news report published on US Policy Feed undergoes multi-tier editorial review. Our reporters verify claims against primary documentation, including:
           </p>
           <ul className="list-disc pl-6 space-y-2 text-sm text-[var(--muted)] mb-3">
             <li>Official congressional records, bill texts, committee transcripts, and Roll Call voting databases.</li>
@@ -64,8 +64,8 @@ export default async function PolicyPage() {
           </ul>
           <p className="text-sm text-[var(--muted)]">
             Readers wishing to flag an inaccuracy are encouraged to contact our fact-checking desk at{' '}
-            <a href="mailto:corrections@uspolicybrief.com" className="text-[var(--bbc-red)] font-bold underline">
-              corrections@uspolicybrief.com
+            <a href="mailto:corrections@uspolicyfeed.com" className="text-[var(--brand-red)] font-bold underline">
+              corrections@uspolicyfeed.com
             </a>
             .
           </p>
@@ -128,11 +128,11 @@ export default async function PolicyPage() {
             For additional details on how we handle user data and general newsroom operations:
           </p>
           <div className="flex flex-wrap gap-4 text-xs font-bold uppercase tracking-wider">
-            <Link href="/privacy" className="text-[var(--bbc-red)] hover:underline">
+            <Link href="/privacy" className="text-[var(--brand-red)] hover:underline">
               Read Privacy Policy →
             </Link>
             <Link href="/about" className="text-[var(--ink)] hover:underline">
-              About US Policy Brief →
+              About US Policy Feed →
             </Link>
             <Link href="/contact" className="text-[var(--ink)] hover:underline">
               Contact the Newsroom →

@@ -1,18 +1,18 @@
 services:
   db:
     image: postgres:15-alpine
-    container_name: uspolicybrief-db
+    container_name: uspolicyfeed-db
     restart: always
     environment:
-      POSTGRES_USER: uspolicybrief
-      POSTGRES_PASSWORD: uspolicybrief_pass_123
-      POSTGRES_DB: uspolicybrief
+      POSTGRES_USER: uspolicyfeed
+      POSTGRES_PASSWORD: uspolicyfeed_pass_123
+      POSTGRES_DB: uspolicyfeed
     ports:
       - '5436:5432'
     volumes:
-      - uspolicybrief_db_data:/var/lib/postgresql/data
+      - uspolicyfeed_db_data:/var/lib/postgresql/data
 
 volumes:
-  uspolicybrief_db_data:
+  uspolicyfeed_db_data:
 
 

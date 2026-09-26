@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'About Us — US Policy Brief',
+  title: 'About Us — US Policy Feed',
   description: 'Authoritative, independent reporting on US policy, governance, legislation, defense, and global affairs. Learn about our mission and editorial standards.',
 }
 
@@ -102,7 +102,7 @@ export default async function AboutPage() {
     <div className="bbc-container category-page">
       {/* ── HEADER BLOCK (Matching Category Title Block) ── */}
       <header className="category-title-block">
-        <span className="story-kicker">US Policy Brief · Independent Journalism</span>
+        <span className="story-kicker">US Policy Feed · Independent Journalism</span>
         <h1 className="category-title">About Us</h1>
         <p className="category-description">
           Authoritative reporting and non-partisan analysis on US policy, congress, governance, and global affairs.
@@ -112,8 +112,8 @@ export default async function AboutPage() {
       {/* ── STATS BAR ─────────────────────────────────── */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-b border-[var(--line)] mb-10">
         {stats.map((stat, i) => (
-          <div key={i} className="p-4 bg-[var(--surface)] border-l-4 border-[var(--bbc-red)]">
-            <div className="font-serif text-3xl md:text-4xl font-bold text-[var(--bbc-red)] leading-none mb-1">
+          <div key={i} className="p-4 bg-[var(--surface)] border-l-4 border-[var(--brand-red)]">
+            <div className="font-serif text-3xl md:text-4xl font-bold text-[var(--brand-red)] leading-none mb-1">
               {stat.number}
             </div>
             <div className="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">
@@ -132,13 +132,13 @@ export default async function AboutPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <div className="lg:col-span-5">
-            <blockquote className="font-serif italic text-2xl md:text-3xl text-[var(--ink)] leading-snug pl-4 border-l-4 border-[var(--bbc-red)]">
+            <blockquote className="font-serif italic text-2xl md:text-3xl text-[var(--ink)] leading-snug pl-4 border-l-4 border-[var(--brand-red)]">
               "We believe that accurate, data-driven, and unspun information is a fundamental right of every citizen in a free society."
             </blockquote>
           </div>
           <div className="lg:col-span-7 space-y-4 text-base text-[#1f1f1f] leading-relaxed">
             <p>
-              US Policy Brief was founded on a simple conviction: in a healthy society, citizens need access to verifiable, unbiased facts to evaluate legislation and hold power accountable.
+              US Policy Feed was founded on a simple conviction: in a healthy society, citizens need access to verifiable, unbiased facts to evaluate legislation and hold power accountable.
             </p>
             <p>
               In an era of algorithm-driven feeds and partisan amplification, we refuse to optimize for outrage. Every article, briefing, and analysis piece is authored and verified by journalists committed to truth, depth, and public interest.
@@ -172,9 +172,9 @@ export default async function AboutPage() {
           {standards.map((val, idx) => (
             <div
               key={idx}
-              className="p-5 bg-white border border-[var(--line)] hover:border-[var(--bbc-red)] transition-colors"
+              className="p-5 bg-white border border-[var(--line)] hover:border-[var(--brand-red)] transition-colors"
             >
-              <span className="story-kicker block mb-1 font-mono font-bold text-[var(--bbc-red)]">
+              <span className="story-kicker block mb-1 font-mono font-bold text-[var(--brand-red)]">
                 {val.num}
               </span>
               <h3 className="story-title text-xl font-bold text-[var(--ink)] mb-2">
@@ -197,7 +197,7 @@ export default async function AboutPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {leadership.map((person, idx) => (
             <div key={idx} className="p-5 bg-[var(--surface)] border border-[var(--soft-line)]">
-              <span className="story-kicker block text-[var(--bbc-red)] mb-1">
+              <span className="story-kicker block text-[var(--brand-red)] mb-1">
                 {person.role}
               </span>
               <h3 className="story-title text-lg font-bold text-[var(--ink)] mb-2">
@@ -223,7 +223,7 @@ export default async function AboutPage() {
               key={idx}
               className="py-4 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 items-baseline"
             >
-              <div className="md:col-span-2 font-serif text-2xl font-bold text-[var(--bbc-red)]">
+              <div className="md:col-span-2 font-serif text-2xl font-bold text-[var(--brand-red)]">
                 {item.year}
               </div>
               <div className="md:col-span-4 font-serif text-base font-bold text-[var(--ink)]">
@@ -247,9 +247,9 @@ export default async function AboutPage() {
         </p>
         <Link
           href="/contact"
-          className="inline-block px-6 py-3 bg-[var(--bbc-red)] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#900] transition-colors"
+          className="inline-block px-6 py-3 bg-[var(--brand-red)] text-white text-xs font-bold uppercase tracking-widest hover:bg-[#900] transition-colors"
         >
-          Contact US Policy Brief
+          Contact US Policy Feed
         </Link>
       </div>
     </div>

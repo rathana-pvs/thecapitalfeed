@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        'brand-red': 'var(--brand-red)',
         'bbc-red': 'var(--bbc-red)',
         ink: 'var(--ink)',
         muted: 'var(--muted)',
@@ -36,7 +37,7 @@ const config: Config = {
         serif: ['Georgia', '"Times New Roman"', 'serif'],
         'source-serif': ['Georgia', '"Times New Roman"', 'serif'],
         sans: ['Arial', 'Helvetica', 'sans-serif'],
-        mono: ['monospace'],
+        mono: ['var(--font-mono)', 'monospace'],
       },
       typography: {
         DEFAULT: {

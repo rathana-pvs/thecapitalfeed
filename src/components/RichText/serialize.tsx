@@ -94,7 +94,7 @@ export function serializeLexical(nodes: Node[], keyPrefix: string = 'node'): JSX
         return (
           <blockquote 
             key={nodeKey} 
-            className="border-l-4 pl-4 py-2.5 my-6 text-lg leading-relaxed italic bg-[var(--surface)] border-[var(--bbc-red)] text-[#222]"
+            className="border-l-4 pl-4 py-2.5 my-6 text-lg leading-relaxed italic bg-[var(--surface)] border-[var(--brand-red)] text-[#222]"
           >
             {children}
           </blockquote>
@@ -123,7 +123,7 @@ export function serializeLexical(nodes: Node[], keyPrefix: string = 'node'): JSX
           <Link
             key={nodeKey}
             href={node.fields?.url || ''}
-            className="underline underline-offset-3 transition-colors hover:text-[var(--ink)] font-medium text-[var(--bbc-red)]"
+            className="underline underline-offset-3 transition-colors hover:text-[var(--ink)] font-medium text-[var(--brand-red)]"
           >
             {children}
           </Link>

@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic'
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const payload = await getPayloadClient()
   const envUrl = process.env.NEXT_PUBLIC_SITE_URL
-  const siteUrl = envUrl && !envUrl.includes('placeholder.com') ? envUrl : 'https://uspolicybrief.com'
+  const siteUrl = envUrl && !envUrl.includes('placeholder.com') ? envUrl : 'https://uspolicyfeed.com'
 
   // Static pages
   const staticPages = ['', '/about', '/contact', '/policy', '/privacy', '/live', '/search']

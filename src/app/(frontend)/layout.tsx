@@ -9,10 +9,18 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import { NavigationProgress } from '@/components/layout/NavigationProgress'
 import { VisitorCounter } from '@/components/layout/VisitorCounter'
 import { getBreakingArticles } from '@/lib/api-server'
+import { IBM_Plex_Mono } from 'next/font/google'
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-mono',
+  display: 'swap',
+})
 
 const envUrl = process.env.NEXT_PUBLIC_SITE_URL
-const siteUrl = envUrl && !envUrl.includes('placeholder.com') ? envUrl : 'https://uspolicybrief.com'
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Brief'
+const siteUrl = envUrl && !envUrl.includes('placeholder.com') ? envUrl : 'https://uspolicyfeed.com'
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -53,12 +61,15 @@ export default async function FrontendLayout({
   const breakingStory = breakingList[0] || null
 
   return (
-    <html lang="en">
+    <html lang="en" className={ibmPlexMono.variable}>
       <head>
-        <script
-          src={`https://jsc.adskeeper.com/site/${process.env.NEXT_PUBLIC_ADS_KEEPER_SITE_ID || '1109794'}.js`}
-          async
-        />
+        {/* Ads script disabled until real Adskeeper ID is configured */}
+        {process.env.NEXT_PUBLIC_ADS_ENABLED === 'true' && process.env.NEXT_PUBLIC_ADS_KEEPER_SITE_ID && (
+          <script
+            src={`https://jsc.adskeeper.com/site/${process.env.NEXT_PUBLIC_ADS_KEEPER_SITE_ID}.js`}
+            async
+          />
+        )}
       </head>
       <body>
         <NavigationProgress />

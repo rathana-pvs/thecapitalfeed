@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const SOURCE_URL = 'https://pulefeed.tech'
+const SOURCE_URL = process.env.SOURCE_URL || 'https://uspolicyfeed.com'
 
 async function scrapeAndPrepare() {
   console.log(`📡 Fetching latest 40 articles from ${SOURCE_URL}/api/articles?limit=40&sort=-publishedAt&depth=2 ...`)
@@ -13,7 +13,7 @@ async function scrapeAndPrepare() {
   })
 
   if (!res.ok) {
-    throw new Error(`Failed to fetch articles from pulefeed.tech: ${res.status} ${res.statusText}`)
+    throw new Error(`Failed to fetch articles from ${SOURCE_URL}: ${res.status} ${res.statusText}`)
   }
 
   const data = await res.json()
@@ -35,17 +35,17 @@ async function scrapeAndPrepare() {
 
     // Handle Author
     let authorData = {
-      name: 'InstantlyFeed Editorial Desk',
-      slug: 'instantlyfeed-editorial',
+      name: 'US Policy Feed Editorial Desk',
+      slug: 'uspolicyfeed-editorial',
       role: 'Senior Newsroom Desk',
-      bio: 'Latest breaking political and international reporting from the InstantlyFeed news team.',
-      email: 'news@instantlyfeed.com',
+      bio: 'Latest breaking political and international reporting from the US Policy Feed news team.',
+      email: 'news@uspolicyfeed.com',
     }
 
     if (raw.author && typeof raw.author === 'object' && raw.author.name) {
       authorData = {
-        name: raw.author.name === 'Toch Media' ? 'InstantlyFeed Newsroom' : raw.author.name,
-        slug: raw.author.slug || 'instantlyfeed-newsroom',
+        name: raw.author.name === 'Toch Media' ? 'US Policy Feed Newsroom' : raw.author.name,
+        slug: raw.author.slug || 'uspolicyfeed-newsroom',
         role: raw.author.role || 'Staff Reporter',
         bio: raw.author.bio || 'Comprehensive news coverage and analysis from our correspondents.',
         email: raw.author.email || 'news@instantlyfeed.com',

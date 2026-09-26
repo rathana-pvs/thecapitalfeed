@@ -103,7 +103,9 @@ async function scrapeUrlDirectly(url: string) {
     .replace(/\s*-\s*instantlyfeed$/i, '')
     .replace(/\s*–\s*pulefeed$/i, '')
     .replace(/\s*-\s*pulefeed$/i, '')
-    .replace(/\s*[-–|•]\s*(?:BBC News|CNN|Reuters|AP News|Fox News|Politico|The Guardian|The New York Times|The Washington Post|Bloomberg|Forbes|Al Jazeera|arnewspost\.info|instantlyfeed|pulefeed|us\s*policy\s*brief)[\s\S]*$/i, '')
+    .replace(/\s*–\s*us\s*policy\s*feed$/i, '')
+    .replace(/\s*-\s*us\s*policy\s*feed$/i, '')
+    .replace(/\s*[-–|•]\s*(?:BBC News|CNN|Reuters|AP News|Fox News|Politico|The Guardian|The New York Times|The Washington Post|Bloomberg|Forbes|Al Jazeera|arnewspost\.info|instantlyfeed|pulefeed|us\s*policy\s*brief|us\s*policy\s*feed)[\s\S]*$/i, '')
     .replace(/[…\.\s]+$/, '')
     .trim()
 
@@ -506,7 +508,7 @@ async function scrapeUrlDirectly(url: string) {
       .toLowerCase()
       .replace(/[^a-z0-9\s]/g, '')
       .split(/\s+/)
-      .filter(w => w.length > 4 && !['about', 'after', 'before', 'their', 'there', 'these', 'would', 'instantlyfeed', 'policy', 'brief'].includes(w))
+      .filter(w => w.length > 4 && !['about', 'after', 'before', 'their', 'there', 'these', 'would', 'instantlyfeed', 'policy', 'brief', 'feed'].includes(w))
       .slice(0, 4)
   }
 
@@ -593,7 +595,7 @@ async function scrapeUrlDirectly(url: string) {
     rawBlocks.push(...filteredBlocks)
   }
 
-  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Brief'
+  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
   const metaTitle = title.endsWith(` - ${siteName}`) ? title : `${title.substring(0, 45)} - ${siteName}`
   
   // Clean fallback excerpt from first clean paragraph (strictly under 160 chars)
@@ -1208,7 +1210,7 @@ export async function POST(req: NextRequest) {
               result.videoDuration = '03:45'
             }
 
-            const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Brief'
+            const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
 
             const aiPrompt = `Given the news article title "${result.title}" and context:\n"${rawParagraphsText.substring(0, 3000)}"\n\nGenerate article metadata strictly following these rules:
 1. "excerpt": A punchy, high-engagement lead summary strictly under 160 characters. Do NOT repeat or duplicate the title.
@@ -1245,7 +1247,7 @@ Return valid JSON with exact keys: { "excerpt", "region", "dateline", "tags", "m
       return NextResponse.json({ error: 'Title or content is required for AI generation' }, { status: 400 })
     }
 
-    const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Brief'
+    const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
 
     let prompt = ''
     if (action === 'full') {
@@ -1290,7 +1292,7 @@ Return JSON with exact keys: { "excerpt", "tags", "metaTitle", "metaDescription"
 function enforceSeoLimits(seoData: any) {
   if (!seoData) return seoData
 
-  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Brief'
+  const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
 
   // 1. Meta Title: 50–60 characters
   if (seoData.metaTitle && typeof seoData.metaTitle === 'string') {

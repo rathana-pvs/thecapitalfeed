@@ -12,33 +12,33 @@ export const mockCategories: Record<string, Category> = {
 export const mockAuthors: Author[] = [
   {
     "id": "author-1",
-    "name": "InstantlyFeed Newsroom",
-    "slug": "pulefeed-stuff",
+    "name": "US Policy Feed Newsroom",
+    "slug": "uspolicyfeed-newsroom",
     "role": "International News Network",
     "bio": "Latest news, analysis and features from Al Jazeera's global network.",
     "avatar": {
       "id": "media-a1",
       "filename": "avatar.jpg",
       "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop",
-      "alt": "InstantlyFeed Newsroom"
+      "alt": "US Policy Feed Newsroom"
     },
-    "twitter": "pulefeed-stuff",
+    "twitter": "uspolicyfeed-newsroom",
     "email": "news@aljazeera.net"
   },
   {
     "id": "author-2",
-    "name": "InstantlyFeed Editorial Desk",
-    "slug": "instantlyfeed-editorial",
+    "name": "US Policy Feed Editorial Desk",
+    "slug": "uspolicyfeed-editorial",
     "role": "Senior Newsroom Desk",
-    "bio": "Latest breaking political and international reporting from the InstantlyFeed news team.",
+    "bio": "Latest breaking political and international reporting from the US Policy Feed news team.",
     "avatar": {
       "id": "media-a2",
       "filename": "avatar.jpg",
       "url": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop",
-      "alt": "InstantlyFeed Editorial Desk"
+      "alt": "US Policy Feed Editorial Desk"
     },
-    "twitter": "instantlyfeed-editorial",
-    "email": "news@instantlyfeed.com"
+    "twitter": "uspolicyfeed-editorial",
+    "email": "news@uspolicyfeed.com"
   }
 ]
 
@@ -61,8 +61,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -118,8 +118,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -165,8 +165,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -212,8 +212,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -259,8 +259,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -306,8 +306,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -353,8 +353,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -400,8 +400,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -447,8 +447,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -497,8 +497,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -544,8 +544,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -591,8 +591,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -638,8 +638,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -685,8 +685,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -735,8 +735,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -782,8 +782,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -832,8 +832,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -879,8 +879,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -926,8 +926,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -976,8 +976,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1023,8 +1023,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1070,8 +1070,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1117,8 +1117,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1164,8 +1164,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1211,8 +1211,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1258,8 +1258,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1305,8 +1305,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1352,8 +1352,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1399,8 +1399,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1446,8 +1446,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1493,8 +1493,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1540,8 +1540,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1587,8 +1587,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1634,8 +1634,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1684,8 +1684,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1731,11 +1731,11 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Editorial Desk",
-      "slug": "instantlyfeed-editorial",
+      "name": "US Policy Feed Editorial Desk",
+      "slug": "uspolicyfeed-editorial",
       "role": "Senior Newsroom Desk",
-      "bio": "Latest breaking political and international reporting from the InstantlyFeed news team.",
-      "email": "news@instantlyfeed.com"
+      "bio": "Latest breaking political and international reporting from the US Policy Feed news team.",
+      "email": "news@uspolicyfeed.com"
     },
     "status": "published",
     "isBreaking": true,
@@ -1781,8 +1781,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1828,8 +1828,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1875,8 +1875,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"
@@ -1922,8 +1922,8 @@ export const mockArticles: Article[] = [
     },
     "author": {
       "id": "author-1",
-      "name": "InstantlyFeed Newsroom",
-      "slug": "pulefeed-stuff",
+      "name": "US Policy Feed Newsroom",
+      "slug": "uspolicyfeed-newsroom",
       "role": "International News Network",
       "bio": "Latest news, analysis and features from Al Jazeera's global network.",
       "email": "news@aljazeera.net"

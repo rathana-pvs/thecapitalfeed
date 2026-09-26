@@ -1,4 +1,4 @@
-# US Policy Brief (USP)
+# US Policy Feed (USF)
 
 An authoritative, high-performance digital news and policy platform engineered for real-time reporting on US governance, congressional legislation, White House policy, defense, and global affairs.
 
@@ -9,7 +9,7 @@ Built with **Next.js 15 (App Router)**, **Payload CMS v3**, **PostgreSQL**, and 
 ## 🌟 Key Features
 
 - **Editorial Layout & Design**:
-  - Distinctive 3-Block **`USP`** brand identity with clean, modern typography.
+  - Distinctive 3-Block **`USF`** brand identity with clean, modern typography.
   - BBC-inspired masthead, breaking news ticker banner, and multi-channel navigation.
   - Compact, ranked **Most Read** sidebar and curated section blocks.
   - Full-width hero coverage, regional beat explorer, and video hub.
@@ -56,29 +56,29 @@ Create a `.env` file in the root directory:
 
 ```env
 # Database
-POSTGRES_USER=uspolicybrief
+POSTGRES_USER=uspolicyfeed
 POSTGRES_PASSWORD=your_secure_password
-POSTGRES_DB=uspolicybrief
-DATABASE_URI=postgresql://uspolicybrief:your_secure_password@localhost:5432/uspolicybrief
+POSTGRES_DB=uspolicyfeed
+DATABASE_URI=postgresql://uspolicyfeed:your_secure_password@localhost:5432/uspolicyfeed
 
 # Payload CMS
 PAYLOAD_SECRET=your_secure_32_byte_secret
 
 # Site Config
-NEXT_PUBLIC_SITE_URL=https://uspolicybrief.com
-NEXT_PUBLIC_SITE_NAME=US Policy Brief
+NEXT_PUBLIC_SITE_URL=https://uspolicyfeed.com
+NEXT_PUBLIC_SITE_NAME=US Policy Feed
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
 
 # Gemini AI API
 GOOGLE_GENERATIVE_AI_API_KEY=your_gemini_api_key
 
 # Adskeeper Widgets
-NEXT_PUBLIC_ADS_KEEPER_SITE_ID=1109214
-NEXT_PUBLIC_ADS_KEEPER_WIDGET_SIDEBAR=2043076
-NEXT_PUBLIC_ADS_KEEPER_WIDGET_IN_ARTICLE_1=2043077
-NEXT_PUBLIC_ADS_KEEPER_WIDGET_IN_ARTICLE_2=2044156
-NEXT_PUBLIC_ADS_KEEPER_WIDGET_UNDER_ARTICLE=2043079
-NEXT_PUBLIC_ADS_KEEPER_WIDGET_FEED=2043075
+NEXT_PUBLIC_ADS_KEEPER_SITE_ID=1109794
+NEXT_PUBLIC_ADS_KEEPER_WIDGET_SIDEBAR=2076627
+NEXT_PUBLIC_ADS_KEEPER_WIDGET_IN_ARTICLE_1=2076626
+NEXT_PUBLIC_ADS_KEEPER_WIDGET_IN_ARTICLE_2=
+NEXT_PUBLIC_ADS_KEEPER_WIDGET_UNDER_ARTICLE=
+NEXT_PUBLIC_ADS_KEEPER_WIDGET_FEED=2076625
 ```
 
 ### 3. Installation

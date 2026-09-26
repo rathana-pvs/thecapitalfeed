@@ -110,7 +110,7 @@ export function InfiniteArticleScroll({ initialArticle, initialRelated }: Infini
             if (slug && title) {
               // Smoothly replace the browser history state with the current article's URL
               window.history.replaceState(null, '', `/article/${slug}`)
-              document.title = `${title} — US Policy Brief`
+              document.title = `${title} — US Policy Feed`
             }
           }
         })

@@ -78,7 +78,8 @@ const MOCK_ADS = [
 // duplicates and silently skip already-scanned slots (e.g. widget 2044156).
 // Instead, the FIRST widget to enter the viewport triggers the global scan;
 export default function AdskeeperWidget({ widgetId, className = '', adType, onlyShowOn }: AdskeeperWidgetProps) {
-  if (!widgetId) return null
+  // Ads temporarily disabled until real IDs are configured
+  if (process.env.NEXT_PUBLIC_ADS_ENABLED !== 'true' || !widgetId) return null
 
   const isDev = process.env.NODE_ENV === 'development'
   const containerRef = useRef<HTMLDivElement>(null)

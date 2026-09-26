@@ -32,7 +32,7 @@ const menuGroups = [
     ],
   },
   {
-    title: 'US Policy Brief',
+    title: 'US Policy Feed',
     links: [
       ['About Us', '/about'],
       ['Contact', '/contact'],
@@ -115,13 +115,13 @@ export default function Header() {
           </button>
         </div>
 
-        <Link href="/" className="site-brand-logo" aria-label="US Policy Brief homepage">
+        <Link href="/" className="site-brand-logo" aria-label="US Policy Feed homepage">
           <span className="brand-blocks">
             <span>U</span>
             <span>S</span>
-            <span>P</span>
+            <span>F</span>
           </span>
-          <span className="brand-wordmark">US POLICY BRIEF</span>
+          <span className="brand-wordmark">US POLICY FEED</span>
         </Link>
 
         <div className="masthead-right" aria-hidden="true" />
@@ -131,7 +131,7 @@ export default function Header() {
         <div className="search-drawer animate-in fade-in duration-200">
           <form className="bbc-container search-form" role="search" onSubmit={handleSearchSubmit}>
             <label className="skip-link" htmlFor="site-search">
-              Search US Policy Brief
+              Search US Policy Feed
             </label>
             <input
               id="site-search"

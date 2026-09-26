@@ -124,7 +124,7 @@ export interface UserAuthOperations {
   };
 }
 /**
- * News articles published on InstantlyFeed.
+ * News articles published on US Policy Feed.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "articles".

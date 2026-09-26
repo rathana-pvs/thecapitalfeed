@@ -4,7 +4,7 @@ import fs from 'fs'
 import path from 'path'
 
 const seed = async () => {
-  console.log('🚀 Starting InstantlyFeed Database Seed...')
+  console.log('🚀 Starting US Policy Feed Database Seed...')
   const payload = await getPayload({ config })
 
   // 1. Clear existing data
@@ -31,7 +31,7 @@ const seed = async () => {
 
   // 2. Ensure Admin User
   console.log('\n👤 Ensuring Admin User...')
-  const adminEmail = 'admin@uspolicybrief.com'
+  const adminEmail = 'admin@uspolicyfeed.com'
   const adminPassword = 'adminpassword123'
 
   const existingAdmin = await payload.find({
@@ -45,7 +45,7 @@ const seed = async () => {
       data: {
         email: adminEmail,
         password: adminPassword,
-        name: 'US Policy Brief Admin',
+        name: 'US Policy Feed Admin',
         role: 'admin',
       },
     })
@@ -79,7 +79,7 @@ const seed = async () => {
       slug: author.slug,
       bio: author.bio || '',
       role: author.role || 'Staff Reporter',
-      email: author.email || 'news@instantlyfeed.com',
+      email: author.email || 'news@uspolicyfeed.com',
     }
 
     if (existing.docs.length === 0) {
@@ -155,7 +155,7 @@ const seed = async () => {
     }
 
     // Author ID resolution
-    const authorSlug = art.author?.slug || 'instantlyfeed-newsroom'
+    const authorSlug = art.author?.slug || 'uspolicyfeed-newsroom'
     const resolvedAuthorId = authorMap[authorSlug] || Object.values(authorMap)[0]
 
     // Create Article Record
@@ -172,7 +172,7 @@ const seed = async () => {
       isFeatured: !!art.isFeatured,
       publishedAt: art.publishedAt,
       readTime: art.readTime || 3,
-      credit: art.credit || 'InstantlyFeed Wire Service',
+      credit: art.credit || 'US Policy Feed Wire Service',
       og: art.og || {
         metaTitle: art.title,
         metaDescription: art.excerpt,
@@ -197,7 +197,7 @@ const seed = async () => {
   }
 
   console.log(`\n==============================================`)
-  console.log(`🎉 InstantlyFeed Seed Completed Successfully!`)
+  console.log(`🎉 US Policy Feed Seed Completed Successfully!`)
   console.log(`- Total Articles Seeded: ${successCount} / ${articles.length}`)
   console.log(`- Admin Credentials: ${adminEmail} / ${adminPassword}`)
   console.log(`==============================================\n`)

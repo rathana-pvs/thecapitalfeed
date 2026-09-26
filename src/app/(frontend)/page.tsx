@@ -10,7 +10,7 @@ import { Article } from '@/types'
 import { mockArticles } from '@/lib/mockData'
 import { getMediaUrl } from '@/lib/utils'
 
-const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Brief'
+const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'US Policy Feed'
 
 export const metadata: Metadata = {
   title: `${siteName} — Real-Time US Policy, Governance & World News`,

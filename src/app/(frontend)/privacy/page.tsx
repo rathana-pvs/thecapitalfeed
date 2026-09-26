@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy — US Policy Brief',
-  description: 'Learn how US Policy Brief collects, protects, and manages reader data and analytics in accordance with global privacy standards.',
+  title: 'Privacy Policy — US Policy Feed',
+  description: 'Learn how US Policy Feed collects, protects, and manages reader data and analytics in accordance with global privacy standards.',
 }
 
 export default async function PrivacyPage() {
@@ -11,8 +11,8 @@ export default async function PrivacyPage() {
     <div className="bbc-container py-8 md:py-12 max-w-[860px]">
       {/* ── HEADER / BREADCRUMB ──────────────────────── */}
       <div className="border-b-2 border-[var(--ink)] pb-4 mb-8">
-        <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[var(--bbc-red)] mb-2">
-          <span>US Policy Brief</span>
+        <div className="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider text-[var(--brand-red)] mb-2">
+          <span>US Policy Feed</span>
           <span>/</span>
           <span>Legal & Compliance</span>
         </div>
@@ -35,7 +35,7 @@ export default async function PrivacyPage() {
             1. Overview and Commitment to Reader Privacy
           </h2>
           <p className="mb-3">
-            US Policy Brief (<em>uspolicybrief.com</em>) is committed to protecting the privacy and fundamental rights of our readers and sources. This Privacy Policy sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed and safeguarded.
+            US Policy Feed (<em>uspolicyfeed.com</em>) is committed to protecting the privacy and fundamental rights of our readers and sources. This Privacy Policy sets out the basis on which any personal data we collect from you, or that you provide to us, will be processed and safeguarded.
           </p>
           <p>
             We adhere to the core principle of data minimization: we collect only the minimum amount of information necessary to deliver independent journalism, optimize performance, and maintain platform security.
@@ -110,11 +110,11 @@ export default async function PrivacyPage() {
             5. Source Confidentiality and Whistleblower Data
           </h2>
           <p className="mb-3">
-            US Policy Brief maintains dedicated encrypted channels (including PGP mail and Signal) for confidential tips and source communications. Information received via these channels is subject to strict journalistic privilege and rigorous newsroom source-protection protocols.
+            US Policy Feed maintains dedicated encrypted channels (including PGP mail and Signal) for confidential tips and source communications. Information received via these channels is subject to strict journalistic privilege and rigorous newsroom source-protection protocols.
           </p>
           <p className="text-sm text-[var(--muted)]">
             We do not store source identification records on unencrypted internet-facing servers. For more details on secure communications, visit our{' '}
-            <Link href="/contact" className="text-[var(--bbc-red)] underline font-bold">
+            <Link href="/contact" className="text-[var(--brand-red)] underline font-bold">
               Secure Tip Desk
             </Link>
             .
@@ -146,8 +146,8 @@ export default async function PrivacyPage() {
             If you have questions regarding this Privacy Policy, wish to exercise your privacy rights, or have inquiries regarding data protection practices:
           </p>
           <div className="text-xs font-mono space-y-1">
-            <div><span className="font-bold text-[var(--ink)]">EMAIL:</span> privacy@uspolicybrief.com</div>
-            <div><span className="font-bold text-[var(--ink)]">LEGAL DESK:</span> legal@uspolicybrief.com</div>
+            <div><span className="font-bold text-[var(--ink)]">EMAIL:</span> privacy@uspolicyfeed.com</div>
+            <div><span className="font-bold text-[var(--ink)]">LEGAL DESK:</span> legal@uspolicyfeed.com</div>
             <div><span className="font-bold text-[var(--ink)]">LOCATION:</span> Washington, D.C., United States</div>
           </div>
         </section>

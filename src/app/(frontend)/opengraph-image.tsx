@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'US Policy Brief — Authoritative US Policy, Governance & World News'
+export const alt = 'US Policy Feed — Authoritative US Policy, Governance & World News'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -33,7 +33,7 @@ export default function Image() {
           }}
         />
 
-        {/* 3-block Logo mark: U S P */}
+        {/* 3-block Logo mark: U S F */}
         <div
           style={{
             display: 'flex',
@@ -88,7 +88,7 @@ export default function Image() {
               borderRadius: '4px',
             }}
           >
-            P
+            F
           </div>
         </div>
 
@@ -110,7 +110,7 @@ export default function Image() {
               textTransform: 'uppercase',
             }}
           >
-            US POLICY BRIEF
+            US POLICY FEED
           </span>
         </div>
 
@@ -139,7 +139,7 @@ export default function Image() {
             letterSpacing: '0.1em',
           }}
         >
-          uspolicybrief.com
+          uspolicyfeed.com
         </div>
       </div>
     ),

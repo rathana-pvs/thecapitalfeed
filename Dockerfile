@@ -20,7 +20,7 @@ ENV NEXT_TELEMETRY_DISABLED=1
 ENV NODE_ENV=production
 ENV PAYLOAD_SECRET=build-time-secret-replace-at-runtime
 ENV DATABASE_URI=postgresql://placeholder:placeholder@placeholder:5432/placeholder
-ENV NEXT_PUBLIC_SITE_URL=https://pulefeed.tech
+ENV NEXT_PUBLIC_SITE_URL=https://uspolicyfeed.com
 
 RUN npm run build
 
@@ -42,11 +42,9 @@ COPY --from=builder /app/payload.config.ts ./payload.config.ts
 COPY --from=builder /app/payload-types.ts  ./payload-types.ts
 COPY --from=builder /app/tsconfig.json     ./tsconfig.json
 
-# Next.js standalone output (set output: 'standalone' in next.config is optional;
-# here we copy the whole .next + node_modules for simplicity on a single droplet)
-COPY --from=builder --chown=nextjs:nodejs /app/.next          ./.next
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules   ./node_modules
-COPY --from=builder /app/src               ./src
+# Next.js standalone output (greatly reduces image size)
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone   ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static       ./.next/static
 
 USER nextjs
 
@@ -54,4 +52,4 @@ EXPOSE 3000
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 
-CMD ["npm", "run", "start"]
+CMD ["node", "server.js"]

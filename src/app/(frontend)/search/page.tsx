@@ -266,7 +266,7 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-24 text-center"><div className="animate-spin w-8 h-8 border-2 border-[var(--bbc-red)] border-t-transparent rounded-full mx-auto mb-4" /><p className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">LOADING SEARCH...</p></div>}>
+    <Suspense fallback={<div className="max-w-[1280px] mx-auto px-4 sm:px-6 py-24 text-center"><div className="animate-spin w-8 h-8 border-2 border-[var(--brand-red)] border-t-transparent rounded-full mx-auto mb-4" /><p className="font-mono text-[10px] uppercase tracking-widest text-[var(--muted)]">LOADING SEARCH...</p></div>}>
       <SearchContent />
     </Suspense>
   )

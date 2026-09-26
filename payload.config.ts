@@ -32,7 +32,7 @@ import { Media } from './src/collections/Media'
 import { Users } from './src/collections/Users'
 import { ShareLinks } from './src/collections/ShareLinks'
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://uspolicybrief.com'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://uspolicyfeed.com'
 
 export default buildConfig({
   sharp,
@@ -42,7 +42,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: '— US Policy Brief CMS',
+      titleSuffix: '— US Policy Feed CMS',
     },
     theme: 'dark',
   },
@@ -76,14 +76,14 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URI || 'postgresql://uspolicybrief:uspolicybrief_pass_123@localhost:5436/uspolicybrief',
+      connectionString: process.env.DATABASE_URI || 'postgresql://uspolicyfeed:uspolicyfeed_pass_123@localhost:5436/uspolicyfeed',
     },
   }),
   plugins: [
     seoPlugin({
       collections: ['articles'],
       uploadsCollection: 'media',
-      generateTitle: ({ doc }: { doc: any }) => doc?.title ? `${doc.title} — US Policy Brief` : 'US Policy Brief',
+      generateTitle: ({ doc }: { doc: any }) => doc?.title ? `${doc.title} — US Policy Feed` : 'US Policy Feed',
       generateDescription: ({ doc }: { doc: any }) => doc?.excerpt || '',
     }),
     (config) => {
@@ -133,12 +133,12 @@ export default buildConfig({
   ],
   cors: [
     siteUrl,
-    'https://uspolicybrief.com',
-    'https://www.uspolicybrief.com',
+    'https://uspolicyfeed.com',
+    'https://www.uspolicyfeed.com',
   ],
   csrf: [
     siteUrl,
-    'https://uspolicybrief.com',
-    'https://www.uspolicybrief.com',
+    'https://uspolicyfeed.com',
+    'https://www.uspolicyfeed.com',
   ],
 })

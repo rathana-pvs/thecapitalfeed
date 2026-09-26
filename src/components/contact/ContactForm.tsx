@@ -26,14 +26,14 @@ export default function ContactForm() {
   if (submitted) {
     return (
       <div className="p-6 bg-[var(--surface)] border border-[var(--line)] text-center space-y-4">
-        <div className="w-12 h-12 rounded-full bg-[var(--bbc-red)] text-white flex items-center justify-center mx-auto text-xl font-bold">
+        <div className="w-12 h-12 rounded-full bg-[var(--brand-red)] text-white flex items-center justify-center mx-auto text-xl font-bold">
           ✓
         </div>
         <h3 className="font-serif text-xl font-bold text-[var(--ink)]">
           Message Received
         </h3>
         <p className="text-sm text-[var(--muted)] leading-relaxed">
-          Thank you for reaching out to US Policy Brief. Your message has been forwarded to the <strong>{formData.department}</strong> desk.
+          Thank you for reaching out to US Policy Feed. Your message has been forwarded to the <strong>{formData.department}</strong> desk.
         </p>
         <button
           type="button"
@@ -59,7 +59,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="space-y-4 text-left">
       <div>
         <label className="block text-xs font-bold uppercase tracking-wider text-[var(--ink)] mb-1.5" htmlFor="contact-name">
-          Full Name <span className="text-[var(--bbc-red)]">*</span>
+          Full Name <span className="text-[var(--brand-red)]">*</span>
         </label>
         <input
           id="contact-name"
@@ -74,7 +74,7 @@ export default function ContactForm() {
 
       <div>
         <label className="block text-xs font-bold uppercase tracking-wider text-[var(--ink)] mb-1.5" htmlFor="contact-email">
-          Email Address <span className="text-[var(--bbc-red)]">*</span>
+          Email Address <span className="text-[var(--brand-red)]">*</span>
         </label>
         <input
           id="contact-email"
@@ -89,7 +89,7 @@ export default function ContactForm() {
 
       <div>
         <label className="block text-xs font-bold uppercase tracking-wider text-[var(--ink)] mb-1.5" htmlFor="contact-dept">
-          Recipient Desk / Department <span className="text-[var(--bbc-red)]">*</span>
+          Recipient Desk / Department <span className="text-[var(--brand-red)]">*</span>
         </label>
         <select
           id="contact-dept"
@@ -121,7 +121,7 @@ export default function ContactForm() {
 
       <div>
         <label className="block text-xs font-bold uppercase tracking-wider text-[var(--ink)] mb-1.5" htmlFor="contact-message">
-          Your Message <span className="text-[var(--bbc-red)]">*</span>
+          Your Message <span className="text-[var(--brand-red)]">*</span>
         </label>
         <textarea
           id="contact-message"

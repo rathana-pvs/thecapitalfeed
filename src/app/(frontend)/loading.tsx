@@ -12,8 +12,8 @@ export default function Loading() {
       </div>
       
       <div className="text-center">
-        <h2 className="font-display text-2xl font-bold mb-2 animate-pulse text-[var(--text-primary)]">
-          INSTANTLY<span className="text-[var(--accent-red)]">FEED</span>
+        <h2 className="font-sans text-2xl font-black tracking-wider uppercase mb-2 animate-pulse text-[var(--text-primary)]">
+          US POLICY <span className="text-[var(--accent-red)]">FEED</span>
         </h2>
         <p className="label-caps text-[10px] tracking-[0.3em] text-[var(--accent-red)] font-ui">
           Retrieving Latest News...
