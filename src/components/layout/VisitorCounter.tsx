@@ -9,18 +9,33 @@ export function VisitorCounter() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const wauKey = process.env.NEXT_PUBLIC_WAU_KEY || '4e9mbhwyhk'
+    const wauKey = process.env.NEXT_PUBLIC_WAU_KEY || 'd7jzjbsmvi'
 
     // 1. Setup global queue
     window._wau = window._wau || []
-    window._wau.push(['dynamic', wauKey, 'xyn', 'c4302bffffff', 'small'])
+    window._wau.push(['dynamic', wauKey, 'lry', 'c4302bffffff', 'small'])
+
+    // Remove legacy script from previous widget ID if present
+    const oldConfig = document.getElementById('_wauxyn')
+    if (oldConfig) oldConfig.remove()
+
+    const container = document.getElementById('wau-container-hidden') || document.body
 
     // 2. Ensure config script exists with exact ID required by whos.amung.us
-    if (!document.getElementById('_wauxyn')) {
+    if (!document.getElementById('_waulry')) {
       const configScript = document.createElement('script')
-      configScript.id = '_wauxyn'
-      configScript.innerHTML = `var _wau = _wau || []; _wau.push(["dynamic", "${wauKey}", "xyn", "c4302bffffff", "small"]);`
-      document.body.appendChild(configScript)
+      configScript.id = '_waulry'
+      configScript.innerHTML = `var _wau = _wau || []; _wau.push(["dynamic", "${wauKey}", "lry", "c4302bffffff", "small"]);`
+      container.appendChild(configScript)
+    }
+
+    // 3. Ensure loader script exists
+    if (!document.getElementById('_wau_loader')) {
+      const loaderScript = document.createElement('script')
+      loaderScript.id = '_wau_loader'
+      loaderScript.async = true
+      loaderScript.src = '//waust.at/d.js'
+      container.appendChild(loaderScript)
     }
 
     // 3. Clear localStorage cache so whos.amung.us doesn't stick to the homepage title

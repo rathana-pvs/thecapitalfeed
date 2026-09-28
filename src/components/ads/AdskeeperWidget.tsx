@@ -352,6 +352,11 @@ export default function AdskeeperWidget({ widgetId, className = '', adType, only
         data-widget-id={widgetId}
         style={{ width: '100%' }}
       />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: '(function(w,q){w[q]=w[q]||[];w[q].push(["_mgc.load"])})(window,"_mgq");',
+        }}
+      />
     </div>
   )
 }
