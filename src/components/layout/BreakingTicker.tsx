@@ -20,12 +20,16 @@ export function BreakingTicker({ articles }: BreakingTickerProps) {
 
   if (!articles || articles.length === 0) return null
 
-  // Ensure enough items to smoothly fill any screen width
+  // Ensure enough items to smoothly fill any screen width without visual gaps
   const tickerItems = articles.length === 1
     ? [articles[0], articles[0], articles[0], articles[0]]
-    : articles.length === 2
+    : articles.length === 2 || articles.length === 3
       ? [...articles, ...articles]
       : articles
+
+  // Dynamic duration calculation for a comfortable, readable speed (~30-35px/s or ~20-25s per headline)
+  const totalChars = tickerItems.reduce((acc, a) => acc + (a.title?.length || 50), 0)
+  const durationSeconds = Math.max(80, Math.round(totalChars / 3.2))
 
   return (
     <aside className="breaking-ticker-wrap" aria-label="Breaking news ticker">
@@ -37,7 +41,10 @@ export function BreakingTicker({ articles }: BreakingTickerProps) {
 
       {/* Marquee Track */}
       <div className="breaking-ticker-content">
-        <div className="breaking-ticker-marquee">
+        <div
+          className="breaking-ticker-marquee"
+          style={{ '--ticker-duration': `${durationSeconds}s` } as React.CSSProperties}
+        >
           <div className="breaking-ticker-group">
             {tickerItems.map((article, i) => (
               <Link

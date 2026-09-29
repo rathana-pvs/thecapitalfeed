@@ -50,8 +50,8 @@ const config: Config = {
         },
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
-        'marquee-pause': 'marquee 30s linear infinite paused',
+        marquee: 'marquee 90s linear infinite',
+        'marquee-pause': 'marquee 90s linear infinite paused',
         shimmer: 'shimmer 2s linear infinite',
         'pulse-dot': 'pulse 1.5s ease-in-out infinite',
       },

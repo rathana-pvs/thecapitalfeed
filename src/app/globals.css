@@ -220,10 +220,11 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid 
   white-space: nowrap;
   width: max-content;
   will-change: transform;
-  animation: tickerMarquee 42s linear infinite;
+  animation: tickerMarquee var(--ticker-duration, 95s) linear infinite;
 }
 
-.breaking-ticker-marquee:hover {
+.breaking-ticker-marquee:hover,
+.breaking-ticker-marquee:focus-within {
   animation-play-state: paused;
 }
 
