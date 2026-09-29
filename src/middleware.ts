@@ -14,8 +14,11 @@ export function middleware(request: NextRequest) {
   if (pathname.startsWith('/admin')) {
     const isPublic = PUBLIC_ADMIN_ROUTES.some((route) => pathname.startsWith(route))
     if (!isPublic && !request.cookies.has('payload-token')) {
-      const loginUrl = new URL('/admin/login', request.url)
-      return NextResponse.redirect(loginUrl)
+      // Reconstruct the URL using forwarded host/proto set by Nginx
+      const proto = request.headers.get('x-forwarded-proto') || 'https'
+      const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || 'thecapitalfeed.com'
+      const loginUrl = `${proto}://${host}/admin/login`
+      return NextResponse.redirect(loginUrl, { status: 307 })
     }
   }
 
