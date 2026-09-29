@@ -58,8 +58,14 @@ export function getMediaUrl(media?: any, fallback: string = 'https://picsum.phot
   if (!media) return fallback
   const url = typeof media === 'string' ? media : (media.externalUrl || media.url)
   if (!url) return fallback
-  if (url.startsWith('http://') || url.startsWith('https://')) return url
-  if (url.startsWith('/api/media/file/')) return `/media/${url.replace('/api/media/file/', '')}`
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    if (url.includes('thecapitalfeed.com/media/') && !url.includes('/api/media/file/')) {
+      return url.replace('thecapitalfeed.com/media/', 'thecapitalfeed.com/api/media/file/')
+    }
+    return url
+  }
+  if (url.startsWith('/api/media/file/')) return url
+  if (url.startsWith('/media/')) return `/api/media/file/${url.replace('/media/', '')}`
   return url.startsWith('/') ? url : `/${url}`
 }
 

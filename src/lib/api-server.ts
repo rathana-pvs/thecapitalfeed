@@ -11,13 +11,16 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL && !process.env.NEXT_PUBLIC_S
 function normalizeImageUrl(url: string | undefined | null): string | undefined {
   if (!url) return undefined
   if (url.startsWith('http://') || url.startsWith('https://')) {
+    if (url.includes('thecapitalfeed.com/media/') && !url.includes('/api/media/file/')) {
+      return url.replace('thecapitalfeed.com/media/', 'thecapitalfeed.com/api/media/file/')
+    }
     return url
   }
   if (url.startsWith('/api/media/file/')) {
-    return `/media/${url.replace('/api/media/file/', '')}`
+    return url
   }
   if (url.startsWith('/media/')) {
-    return url
+    return `/api/media/file/${url.replace('/media/', '')}`
   }
   return url.startsWith('/') ? url : `/${url}`
 }
