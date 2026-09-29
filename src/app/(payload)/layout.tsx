@@ -21,15 +21,8 @@ const serverFunction = async function (args: any) {
 
 export default function Layout({ children }: Args) {
   return (
-    <>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `(function(){ document.documentElement.setAttribute('data-theme', 'dark'); try { localStorage.setItem('payload-theme', 'dark'); } catch(e){} })();`,
-        }}
-      />
-      <RootLayout config={configPromise} importMap={importMap} serverFunction={serverFunction}>
-        {children}
-      </RootLayout>
-    </>
+    <RootLayout config={configPromise} importMap={importMap} serverFunction={serverFunction}>
+      {children}
+    </RootLayout>
   )
 }

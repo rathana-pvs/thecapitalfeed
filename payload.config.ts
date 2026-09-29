@@ -35,6 +35,7 @@ import { ShareLinks } from './src/collections/ShareLinks'
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://thecapitalfeed.com'
 
 export default buildConfig({
+  serverURL: siteUrl,
   sharp,
   admin: {
     user: Users.slug,
