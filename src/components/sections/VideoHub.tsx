@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Article } from '@/types';
-import { getMediaUrl } from '@/lib/utils';
+import { getMediaUrl, getCategoryLabel } from '@/lib/utils';
 
 interface VideoHubProps { articles: Article[]; }
 
@@ -25,7 +25,7 @@ export default function VideoHub({ articles }: VideoHubProps) {
             </Link>
             <Link href={`/article/${lead.slug}`}><h3 className="story-title">{lead.title}</h3></Link>
             <p className="story-summary">{lead.excerpt}</p>
-            <div className="story-meta"><span>{lead.category?.name || 'Video'}</span><span>{lead.readTime || 3} min</span></div>
+            <div className="story-meta"><span>{getCategoryLabel(lead.category, 'Video')}</span><span>{lead.readTime || 3} min</span></div>
           </article>
           <div className="video-list">
             {rest.slice(0, 4).map((story) => {
@@ -36,7 +36,7 @@ export default function VideoHub({ articles }: VideoHubProps) {
                     {imgUrl && <Image src={imgUrl} alt={story.coverImage?.alt || story.title} fill sizes="130px" />}
                     <span className="media-badge"><span className="play-mark">▶</span>{story.videoDuration || '02:15'}</span>
                   </Link>
-                  <div><span className="story-kicker">{story.category?.name || 'Video'}</span><Link href={`/article/${story.slug}`}><h3 className="story-title">{story.title}</h3></Link></div>
+                  <div><span className="story-kicker">{getCategoryLabel(story.category, 'Video')}</span><Link href={`/article/${story.slug}`}><h3 className="story-title">{story.title}</h3></Link></div>
                 </article>
               );
             })}

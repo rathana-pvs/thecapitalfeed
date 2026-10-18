@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getArticles } from '@/lib/api-server'
-import { getMediaUrl } from '@/lib/utils'
+import { getMediaUrl, getCategoryLabel } from '@/lib/utils'
 import MostRead from '@/components/sections/MostRead'
 import { Article } from '@/types'
 import { mockArticles } from '@/lib/mockData'
@@ -13,15 +13,14 @@ interface CategoryPageProps {
 }
 
 const categoryDescriptions: Record<string, string> = {
-  world: 'The latest international news, analysis and eyewitness reporting from correspondents around the world.',
-  business: 'Global markets, companies, technology and the forces changing how the world works.',
-  innovation: 'New ideas in technology, science, artificial intelligence and engineering shaping the future.',
-  technology: 'New ideas in technology, science, artificial intelligence and engineering shaping the future.',
-  culture: 'Arts, entertainment, ideas, literature and stories that explain how we live now.',
-  earth: 'Reporting on climate, environment, renewable energy, and the changing planet.',
-  travel: 'Inspiring places, destinations, practical discoveries and journeys across the globe.',
-  video: 'The latest video reports, documentaries, explainers and audio stories from journalists.',
-  sport: 'Live scores, tournament reports, transfer news and global athletic coverage.',
+  political: 'The latest political news, government analysis, policy debates and legislative reporting.',
+  science: 'Breakthrough discoveries, space exploration, scientific research and technological innovations.',
+  health: 'Public health developments, medical research, wellness trends and healthcare policy.',
+  climate: 'Reporting on climate change, renewable energy, environmental policy and the changing planet.',
+  entertainment: 'Culture, movies, music, arts, celebrity news and entertainment industry coverage.',
+  sport: 'Live coverage, tournament reports, athletic competitions and global sports news.',
+  video: 'The latest video reports, documentaries, explainers and multimedia journalism.',
+  world: 'The latest international news, geopolitical developments and global reporting.',
 }
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
@@ -30,7 +29,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'The Capital Feed'
   return {
     title: `${categoryName} — ${siteName}`,
-    description: categoryDescriptions[slug.toLowerCase()] || `The latest ${categoryName} policy, analysis, and reporting.`,
+    description: categoryDescriptions[slug.toLowerCase()] || `The latest ${categoryName} news, analysis, and reporting.`,
   }
 }
 
@@ -45,13 +44,23 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
     : mockArticles
 
   const categoryArticles = allArticles.filter((a) => {
-    if (!a.category) return true
+    if (!a.category) return false
+    if (typeof a.category === 'string') {
+      const cVal = a.category.toLowerCase()
+      return (
+        cVal === cleanSlug ||
+        (cleanSlug === 'political' && (cVal === 'politics' || cVal === 'policy' || cVal === 'congress')) ||
+        (cleanSlug === 'climate' && cVal === 'earth') ||
+        (cleanSlug === 'sport' && cVal === 'sports') ||
+        (cleanSlug === 'entertainment' && cVal === 'culture')
+      )
+    }
     if (typeof a.category === 'object') {
       const cSlug = a.category.slug?.toLowerCase() || ''
       const cName = a.category.name?.toLowerCase() || ''
-      return cSlug === cleanSlug || cName === cleanSlug || cSlug.includes(cleanSlug) || cleanSlug === 'world'
+      return cSlug === cleanSlug || cName === cleanSlug || cSlug.includes(cleanSlug)
     }
-    return true
+    return false
   })
 
   const articles = categoryArticles.length > 0 ? categoryArticles : allArticles
@@ -97,14 +106,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <p className="story-summary">{lead.excerpt}</p>
               <div className="story-meta">
                 <span>{lead.readTime || 3} min read</span>
-                <span>{lead.region || lead.category?.name || 'News'}</span>
+                <span>{getCategoryLabel(lead.category, lead.region || 'News')}</span>
               </div>
             </article>
 
             <div className="category-secondary">
               {supporting.map((story) => (
                 <article className="category-secondary-story" key={story.id}>
-                  <span className="story-kicker">{story.region || story.category?.name || 'News'}</span>
+                  <span className="story-kicker">{getCategoryLabel(story.category, story.region || 'News')}</span>
                   <Link href={`/article/${story.slug}`}><h2 className="story-title">{story.title}</h2></Link>
                   <p className="story-summary">{story.excerpt}</p>
                   <div className="story-meta"><span>{story.readTime || 3} min read</span></div>
@@ -131,7 +140,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       </Link>
                     )}
                     <div>
-                      <span className="story-kicker">{story.region || story.category?.name || 'News'}</span>
+                      <span className="story-kicker">{getCategoryLabel(story.category, story.region || 'News')}</span>
                       <Link href={`/article/${story.slug}`}><h3 className="story-title">{story.title}</h3></Link>
                       <p className="story-summary">{story.excerpt}</p>
                       <div className="story-meta"><span>{story.readTime || 3} min read</span></div>

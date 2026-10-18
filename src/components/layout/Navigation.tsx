@@ -6,14 +6,14 @@ import { usePathname } from 'next/navigation';
 
 const channels = [
   ['Home', '/'],
-  ['US Policy', '/category/policy'],
-  ['Congress', '/category/congress'],
-  ['Economy', '/category/business'],
-  ['Defense', '/category/defense'],
-  ['World', '/category/world'],
-  ['Innovation', '/category/innovation'],
-  ['Opinion', '/category/opinion'],
+  ['Political', '/category/political'],
+  ['Science', '/category/science'],
+  ['Health', '/category/health'],
+  ['Climate', '/category/climate'],
+  ['Entertainment', '/category/entertainment'],
+  ['Sport', '/category/sport'],
   ['Video', '/category/video'],
+  ['World', '/category/world'],
 ] as const;
 
 export default function Navigation() {

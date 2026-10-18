@@ -9,6 +9,7 @@ interface AIResult {
   content?: string
   excerpt?: string
   tags?: string[]
+  category?: string
   region?: string
   dateline?: string
   isVideo?: boolean
@@ -186,6 +187,7 @@ export const AIAssistant: React.FC = () => {
     if (result.coverImage) applyField('coverImage', result.coverImage)
     if (result.excerpt) applyField('excerpt', result.excerpt)
     if (result.content) applyField('content', result.content)
+    if (result.category) applyField('category', result.category)
     if (result.region) applyField('region', result.region)
     if (result.dateline) applyField('dateline', result.dateline)
     if (result.isVideo) applyField('isVideo', result.isVideo)
@@ -601,6 +603,9 @@ export const AIAssistant: React.FC = () => {
                     applied={!!applied['content']} 
                     onApply={() => applyField('content', result.content)} 
                   />
+                )}
+                {result.category && (
+                  <ResultCard label="Category" value={result.category.toUpperCase()} applied={!!applied['category']} onApply={() => applyField('category', result.category)} />
                 )}
                 {result.tags && (
                   <div style={{ padding: 12, borderRadius: 8, background: 'var(--theme-elevation-150, #21262d)', border: '1px solid var(--theme-border-color, #30363d)' }}>

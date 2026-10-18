@@ -995,7 +995,7 @@ For content summarization and AI formatting, follow these strict editorial rules
 6. Core Takeaways First (Lead-In): Put the main conclusion, event, or answer in the very first sentence (the "5 Ws": Who, What, When, Where, Why).
 7. Eliminate Fluff & Redundancies: Strip away unnecessary background details, conversational filler, repetitive examples, and minor anecdotes.
 8. Maintain Factual Accuracy: Preserve the original meaning and context without altering facts or adding unverified information.
-9. Region & Dateline: Categorize region (one of: world, europe, asia, us-canada, middle-east, latin-america, africa) and dateline (e.g. LONDON, GENEVA, WASHINGTON, TOKYO).
+9. Category & Region: Categorize 'category' (one of: political, science, health, climate, entertainment, sport, video, world), 'region' (one of: world, europe, asia, us-canada, middle-east, latin-america, africa), and 'dateline' (e.g. LONDON, GENEVA, WASHINGTON, TOKYO).
 10. SEO Metadata Limits:
    - Meta Title: 50–60 characters.
    - Meta Description: 100–150 characters.
@@ -1214,13 +1214,14 @@ export async function POST(req: NextRequest) {
 
             const aiPrompt = `Given the news article title "${result.title}" and context:\n"${rawParagraphsText.substring(0, 3000)}"\n\nGenerate article metadata strictly following these rules:
 1. "excerpt": A punchy, high-engagement lead summary strictly under 160 characters. Do NOT repeat or duplicate the title.
-2. "region": One of ["world", "europe", "asia", "us-canada", "middle-east", "latin-america", "africa"].
-3. "dateline": Uppercase city name of the news origin (e.g. "LONDON", "GENEVA", "WASHINGTON", "TOKYO").
-4. "tags": ["3-5 relevant lowercase tags"].
-5. "metaTitle": SEO title strictly 50-60 characters ending with - ${siteName}.
-6. "metaDescription": SEO meta description strictly 100-150 characters.
+2. "category": One of ["political", "science", "health", "climate", "entertainment", "sport", "video", "world"].
+3. "region": One of ["world", "europe", "asia", "us-canada", "middle-east", "latin-america", "africa"].
+4. "dateline": Uppercase city name of the news origin (e.g. "LONDON", "GENEVA", "WASHINGTON", "TOKYO").
+5. "tags": ["3-5 relevant lowercase tags"].
+6. "metaTitle": SEO title strictly 50-60 characters ending with - ${siteName}.
+7. "metaDescription": SEO meta description strictly 100-150 characters.
 
-Return valid JSON with exact keys: { "excerpt", "region", "dateline", "tags", "metaTitle", "metaDescription" }`
+Return valid JSON with exact keys: { "excerpt", "category", "region", "dateline", "tags", "metaTitle", "metaDescription" }`
 
             const rawText = await generateAiText(SYSTEM_PROMPT, aiPrompt)
             const aiData = extractJsonFromText(rawText)
@@ -1229,6 +1230,7 @@ Return valid JSON with exact keys: { "excerpt", "region", "dateline", "tags", "m
             if (aiData.tags) result.tags = aiData.tags
             if (aiData.metaTitle) result.metaTitle = aiData.metaTitle
             if (aiData.metaDescription) result.metaDescription = aiData.metaDescription
+            if (aiData.category) result.category = aiData.category
             if (aiData.region) result.region = aiData.region
             if (aiData.dateline) result.dateline = aiData.dateline
           }
@@ -1254,11 +1256,13 @@ Return valid JSON with exact keys: { "excerpt", "region", "dateline", "tags", "m
       prompt = `Given the article title "${title}"${content ? ` and notes: "${content}"` : ''}, generate a complete summary news article adhering to these rules:
 - "excerpt": A punchy, high-engagement lead summary strictly under 160 characters.
 - "content": Summary body of EXACTLY 4 short paragraphs (no H2/H3 subheadings). Total word count MUST be between 120 and 140 words. Each paragraph MUST be at most 35 words long.
+- "category": One of ["political", "science", "health", "climate", "entertainment", "sport", "video", "world"]
+- "region": One of ["world", "europe", "asia", "us-canada", "middle-east", "latin-america", "africa"]
 - "tags": ["3-5 relevant lowercase tags"]
 - "metaTitle": SEO title strictly 50-60 characters ending with - ${siteName}.
 - "metaDescription": SEO meta description strictly 100-150 characters.
 
-Return JSON with exact keys: { "excerpt", "content", "tags", "metaTitle", "metaDescription" }`
+Return JSON with exact keys: { "excerpt", "content", "category", "region", "tags", "metaTitle", "metaDescription" }`
     } else if (action === 'content_only') {
       prompt = `Given the article title "${title}"${content ? ` and notes: "${content}"` : ''}, generate the summary article content adhering to these rules:
 - "excerpt": A punchy, high-engagement lead summary strictly under 160 characters.

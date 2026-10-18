@@ -6,23 +6,22 @@ import { useRouter } from 'next/navigation';
 
 const menuGroups = [
   {
-    title: 'News & Policy',
+    title: 'News & Topics',
     links: [
       ['Home', '/'],
-      ['US Policy', '/category/policy'],
-      ['Congress', '/category/congress'],
-      ['Economy', '/category/business'],
-      ['Defense & Security', '/category/defense'],
-      ['World News', '/category/world'],
+      ['Political', '/category/political'],
+      ['Science', '/category/science'],
+      ['Health', '/category/health'],
+      ['Climate', '/category/climate'],
+      ['World', '/category/world'],
     ],
   },
   {
     title: 'Sections',
     links: [
-      ['Opinion & Ideas', '/category/opinion'],
-      ['Tech & Innovation', '/category/innovation'],
-      ['Climate & Earth', '/category/earth'],
-      ['Watch & Listen', '/category/video'],
+      ['Entertainment', '/category/entertainment'],
+      ['Sport', '/category/sport'],
+      ['Video', '/category/video'],
     ],
   },
   {

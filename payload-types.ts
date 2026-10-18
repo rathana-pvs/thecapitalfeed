@@ -162,6 +162,7 @@ export interface Article {
    */
   credit?: string | null;
   author?: (number | null) | Author;
+  category?: ('political' | 'science' | 'health' | 'climate' | 'entertainment' | 'sport' | 'video' | 'world') | null;
   region?: ('world' | 'europe' | 'asia' | 'us-canada' | 'middle-east' | 'latin-america' | 'africa') | null;
   tags?:
     | {
@@ -435,6 +436,7 @@ export interface ArticlesSelect<T extends boolean = true> {
   dateline?: T;
   credit?: T;
   author?: T;
+  category?: T;
   region?: T;
   tags?:
     | T

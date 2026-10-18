@@ -10,7 +10,7 @@ import NewsletterBanner from '@/components/layout/NewsletterBanner'
 import { getArticles, getFeatured, getVideoArticles } from '@/lib/api-server'
 import { Article } from '@/types'
 import { mockArticles } from '@/lib/mockData'
-import { getMediaUrl } from '@/lib/utils'
+import { getMediaUrl, getCategoryLabel } from '@/lib/utils'
 
 const siteName = process.env.NEXT_PUBLIC_SITE_NAME || 'The Capital Feed'
 
@@ -63,7 +63,7 @@ export default async function HomePage() {
           <section className="editorial-section" aria-labelledby="spotlight-heading">
             <div className="section-heading-row">
               <h2 id="spotlight-heading" className="section-heading">Policy Spotlight</h2>
-              <Link href="/category/policy" className="section-more">More spotlights →</Link>
+              <Link href="/category/political" className="section-more">More spotlights →</Link>
             </div>
             <div className="spotlight-grid">
               {/* Lead Feature (2/3 width) */}
@@ -81,7 +81,7 @@ export default async function HomePage() {
                 )}
                 <div className="pt-3">
                   <span className="story-kicker text-xs text-[var(--brand-red)] font-bold uppercase tracking-wider">
-                    {spotlightLead.category?.name || 'Spotlight'}
+                    {getCategoryLabel(spotlightLead.category, 'Spotlight')}
                   </span>
                   <Link href={`/article/${spotlightLead.slug}`}>
                     <h3 className="story-title text-xl sm:text-2xl font-bold leading-tight group-hover:text-[var(--brand-red)] transition-colors">
@@ -102,7 +102,7 @@ export default async function HomePage() {
               <div className="spotlight-side">
                 {spotlightSide.map((story) => {
                   const imgUrl = getMediaUrl(story.coverImage)
-                  const catName = story.category?.name || 'Analysis'
+                  const catName = getCategoryLabel(story.category, 'Analysis')
                   return (
                     <article className="spotlight-side-item group" key={story.id}>
                       {imgUrl && (
@@ -155,7 +155,7 @@ export default async function HomePage() {
             <div>
               {moreNews.map((story) => {
                 const imgUrl = getMediaUrl(story.coverImage)
-                const catName = story.category?.name || 'News'
+                const catName = getCategoryLabel(story.category, 'News')
                 return (
                   <article className="news-list-story group" key={story.id}>
                     {imgUrl && (

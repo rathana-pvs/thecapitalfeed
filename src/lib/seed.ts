@@ -166,6 +166,7 @@ const seed = async () => {
       content: art.content,
       coverImage: mediaId,
       author: resolvedAuthorId,
+      category: art.category ? (typeof art.category === 'object' ? art.category.slug : art.category) : 'political',
       tags: art.tags || [{ tag: 'news' }],
       status: 'published',
       isBreaking: !!art.isBreaking,

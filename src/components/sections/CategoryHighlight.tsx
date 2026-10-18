@@ -8,12 +8,14 @@ import { SectionDivider } from '@/components/ui/SectionDivider'
 
 const CATEGORIES = [
   { slug: 'all', name: 'All Desks' },
-  { slug: 'elections', name: 'Elections' },
-  { slug: 'parliament', name: 'Parliament' },
-  { slug: 'international', name: 'International' },
-  { slug: 'policy', name: 'Policy & Law' },
-  { slug: 'defense', name: 'Defense' },
-  { slug: 'opinion', name: 'Opinion' },
+  { slug: 'political', name: 'Political' },
+  { slug: 'science', name: 'Science' },
+  { slug: 'health', name: 'Health' },
+  { slug: 'climate', name: 'Climate' },
+  { slug: 'entertainment', name: 'Entertainment' },
+  { slug: 'sport', name: 'Sport' },
+  { slug: 'video', name: 'Video' },
+  { slug: 'world', name: 'World' },
 ]
 
 interface CategoryHighlightProps {
@@ -29,6 +31,16 @@ export function CategoryHighlight({ articles }: CategoryHighlightProps) {
     ? articles
     : articles.filter((a) => {
         if (!a.category) return false
+        if (typeof a.category === 'string') {
+          const cVal = a.category.toLowerCase()
+          return (
+            cVal === activeTab.toLowerCase() ||
+            (activeTab === 'political' && (cVal === 'politics' || cVal === 'policy' || cVal === 'congress')) ||
+            (activeTab === 'climate' && cVal === 'earth') ||
+            (activeTab === 'sport' && cVal === 'sports') ||
+            (activeTab === 'entertainment' && cVal === 'culture')
+          )
+        }
         if (typeof a.category === 'object') {
           return a.category.slug === activeTab || a.category.name?.toLowerCase().includes(activeTab.toLowerCase())
         }

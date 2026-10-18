@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Article } from '@/types';
-import { getMediaUrl } from '@/lib/utils';
+import { getMediaUrl, getCategoryLabel } from '@/lib/utils';
 
 interface RegionalNewsProps { articles: Article[]; }
 const regions = ['Europe', 'Asia', 'US & Canada', 'Middle East', 'Africa', 'Latin America'];
@@ -37,7 +37,7 @@ export default function RegionalNews({ articles }: RegionalNewsProps) {
       <div className="topic-grid">
         {stories.map((story) => {
           const imgUrl = getMediaUrl(story.coverImage);
-          const kicker = story.region || story.category?.name || 'World';
+          const kicker = story.region || getCategoryLabel(story.category, 'World');
           return (
             <article className="topic-card" key={story.id}>
               {imgUrl && (

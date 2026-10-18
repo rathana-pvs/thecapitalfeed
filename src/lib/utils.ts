@@ -79,3 +79,39 @@ export function extractKeyPoints(article?: any): string[] {
   return []
 }
 
+export const CATEGORY_LABELS: Record<string, string> = {
+  political: 'Political',
+  science: 'Science',
+  health: 'Health',
+  climate: 'Climate',
+  entertainment: 'Entertainment',
+  sport: 'Sport',
+  video: 'Video',
+  world: 'World',
+  // Aliases / legacy fallbacks
+  politics: 'Political',
+  policy: 'Political',
+  congress: 'Political',
+  sports: 'Sport',
+  earth: 'Climate',
+  culture: 'Entertainment',
+}
+
+export function getCategoryLabel(category?: any, fallback = 'News'): string {
+  if (!category) return fallback
+  if (typeof category === 'string') {
+    return CATEGORY_LABELS[category.toLowerCase()] || (category.charAt(0).toUpperCase() + category.slice(1))
+  }
+  if (typeof category === 'object' && category.name) {
+    return category.name
+  }
+  return fallback
+}
+
+export function getCategorySlug(category?: any, fallback = 'political'): string {
+  if (!category) return fallback
+  if (typeof category === 'string') return category.toLowerCase()
+  if (typeof category === 'object' && category.slug) return category.slug.toLowerCase()
+  return fallback
+}
+

@@ -1,12 +1,14 @@
 import { Article, Author, Category } from '@/types'
 
 export const mockCategories: Record<string, Category> = {
-  politics: { id: 'cat-1', name: 'Politics', slug: 'politics' },
-  global: { id: 'cat-2', name: 'Global Affairs', slug: 'global' },
-  defense: { id: 'cat-3', name: 'Defense & Security', slug: 'defense' },
-  economy: { id: 'cat-4', name: 'Economy', slug: 'economy' },
-  tech: { id: 'cat-5', name: 'Tech Policy', slug: 'tech' },
-  opinion: { id: 'cat-6', name: 'Opinion', slug: 'opinion' },
+  political: { id: 'cat-1', name: 'Political', slug: 'political' },
+  science: { id: 'cat-2', name: 'Science', slug: 'science' },
+  health: { id: 'cat-3', name: 'Health', slug: 'health' },
+  climate: { id: 'cat-4', name: 'Climate', slug: 'climate' },
+  entertainment: { id: 'cat-5', name: 'Entertainment', slug: 'entertainment' },
+  sport: { id: 'cat-6', name: 'Sport', slug: 'sport' },
+  video: { id: 'cat-7', name: 'Video', slug: 'video' },
+  world: { id: 'cat-8', name: 'World', slug: 'world' },
 }
 
 export const mockAuthors: Author[] = [

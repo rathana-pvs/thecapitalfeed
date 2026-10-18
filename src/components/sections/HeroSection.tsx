@@ -2,17 +2,17 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Article } from '@/types';
-import { getMediaUrl, extractKeyPoints } from '@/lib/utils';
+import { getMediaUrl, extractKeyPoints, getCategoryLabel } from '@/lib/utils';
 
 interface HeroSectionProps { leadStory: Article; secondaryStories: Article[]; }
 
 function StoryMeta({ story }: { story: Article }) {
-  const catName = story.category?.name || 'News';
+  const catName = getCategoryLabel(story.category, 'News');
   return <div className="story-meta"><span>{story.readTime || 3} min read</span><span>{catName}</span></div>;
 }
 
 function SideStory({ story, image = false }: { story: Article; image?: boolean }) {
-  const catName = story.category?.name || 'News';
+  const catName = getCategoryLabel(story.category, 'News');
   const imgUrl = getMediaUrl(story.coverImage);
 
   return (
@@ -37,7 +37,7 @@ export default function HeroSection({ leadStory, secondaryStories }: HeroSection
   const cards = secondaryStories.slice(0, 4);
   const leadImage = getMediaUrl(leadStory?.coverImage);
   const keyPoints = extractKeyPoints(leadStory);
-  const leadCategory = leadStory?.category?.name || 'Top Story';
+  const leadCategory = getCategoryLabel(leadStory?.category, 'Top Story');
 
   return (
     <section className="hero-package" aria-labelledby="top-story-heading">
@@ -111,7 +111,7 @@ export default function HeroSection({ leadStory, secondaryStories }: HeroSection
       {cards.length > 0 && (
         <div className="hero-secondary-grid">
           {cards.map((story) => {
-            const catName = story.category?.name || 'News';
+            const catName = getCategoryLabel(story.category, 'News');
             const imgUrl = getMediaUrl(story.coverImage);
             return (
               <article key={story.id} className="hero-secondary-card group">

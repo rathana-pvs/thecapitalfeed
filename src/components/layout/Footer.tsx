@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 interface FooterProps { settings?: { footerText?: string }; }
-const channels = [['Home', '/'], ['US Policy', '/category/policy'], ['Congress', '/category/congress'], ['Economy', '/category/business'], ['Defense', '/category/defense'], ['World', '/category/world'], ['Innovation', '/category/innovation'], ['Opinion', '/category/opinion'], ['Video', '/category/video']] as const;
+const channels = [['Home', '/'], ['Political', '/category/political'], ['Science', '/category/science'], ['Health', '/category/health'], ['Climate', '/category/climate'], ['Entertainment', '/category/entertainment'], ['Sport', '/category/sport'], ['Video', '/category/video'], ['World', '/category/world']] as const;
 
 export default function Footer({ settings }: FooterProps) {
   const footerText = settings?.footerText || `© ${new Date().getFullYear()} The Capital Feed. All rights reserved. Providing authoritative reporting on US governance, congressional policy, national defense, and global affairs.`;

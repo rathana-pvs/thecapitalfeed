@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getArticle, getArticles, getRelatedArticles } from '@/lib/api-server'
-import { getMediaUrl, extractKeyPoints, formatDate } from '@/lib/utils'
+import { getMediaUrl, extractKeyPoints, formatDate, getCategoryLabel, getCategorySlug } from '@/lib/utils'
 import ExecutiveSummary from '@/components/article/ExecutiveSummary'
 import MostRead from '@/components/sections/MostRead'
 import { RichText } from '@/components/RichText'
@@ -96,8 +96,8 @@ export default async function ArticlePage({ params }: PageProps) {
   const allArticles = allArticlesRes.docs || []
   const heroImage = getMediaUrl(article.coverImage)
   const keyPoints = extractKeyPoints(article)
-  const catName = article.category?.name || 'World'
-  const catSlug = article.category?.slug || 'world'
+  const catName = getCategoryLabel(article.category, 'World')
+  const catSlug = getCategorySlug(article.category, 'world')
   const authorInitial = (article.author?.name || 'B').charAt(0).toUpperCase()
   const formattedDate = article.publishedAt ? formatDate(article.publishedAt, 'd MMMM yyyy') : 'Recent'
 
@@ -221,7 +221,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 <h2 id="related-heading">Related</h2>
                 {relatedArticles.map((story) => (
                   <Link href={`/article/${story.slug}`} className="related-story" key={story.id}>
-                    <span className="story-kicker">{story.category?.name || 'News'}</span>
+                    <span className="story-kicker">{getCategoryLabel(story.category, 'News')}</span>
                     <h3 className="story-title">{story.title}</h3>
                   </Link>
                 ))}

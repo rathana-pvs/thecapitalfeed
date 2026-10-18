@@ -147,6 +147,22 @@ export const Articles: CollectionConfig = {
     { name: 'credit', type: 'text', admin: { description: 'News source or attribution (e.g. BBC News, AP, Reuters).' } },
     { name: 'author', type: 'relationship', relationTo: 'authors', admin: { position: 'sidebar' } },
     {
+      name: 'category',
+      type: 'select',
+      admin: { position: 'sidebar' },
+      options: [
+        { label: 'Political', value: 'political' },
+        { label: 'Science', value: 'science' },
+        { label: 'Health', value: 'health' },
+        { label: 'Climate', value: 'climate' },
+        { label: 'Entertainment', value: 'entertainment' },
+        { label: 'Sport', value: 'sport' },
+        { label: 'Video', value: 'video' },
+        { label: 'World', value: 'world' },
+      ],
+      defaultValue: 'political',
+    },
+    {
       name: 'region',
       type: 'select',
       admin: { position: 'sidebar' },

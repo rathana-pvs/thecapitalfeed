@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Article } from '@/types';
+import { getCategoryLabel } from '@/lib/utils';
 
 interface MostReadProps {
   articles: Article[];
@@ -20,7 +21,7 @@ export default function MostRead({ articles, limit = 6 }: MostReadProps) {
       </div>
       <ol className="ranked-list">
         {ranked.map((article, index) => {
-          const catName = article.category?.name || 'News';
+          const catName = getCategoryLabel(article.category, 'News');
           return (
             <li className="ranked-item" key={article.id}>
               <Link href={`/article/${article.slug}`} className="ranked-link group" title={article.title}>

@@ -47,7 +47,7 @@ export interface Article {
   content?: any
   coverImage: MediaItem
   credit?: string
-  category?: Category
+  category?: Category | string
   author?: Author
   tags?: Tag[]
   status: 'draft' | 'published' | 'archived'
