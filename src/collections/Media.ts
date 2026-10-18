@@ -2,7 +2,18 @@ import type { CollectionConfig } from 'payload'
 import path from 'path'
 import fs from 'fs'
 
-const mediaDir = path.resolve(process.cwd(), 'public/media')
+const getMediaDirectory = () => {
+  if (process.env.PAYLOAD_MEDIA_DIR) {
+    return path.resolve(process.env.PAYLOAD_MEDIA_DIR)
+  }
+  const cwd = process.cwd()
+  if (cwd.includes('.next')) {
+    return path.resolve(cwd.split('.next')[0], 'public/media')
+  }
+  return path.resolve(cwd, 'public/media')
+}
+
+const mediaDir = getMediaDirectory()
 try {
   if (!fs.existsSync(mediaDir)) {
     fs.mkdirSync(mediaDir, { recursive: true })
