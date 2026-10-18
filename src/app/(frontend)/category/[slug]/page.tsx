@@ -38,38 +38,22 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const cleanSlug = slug.toLowerCase()
   const categoryName = cleanSlug.charAt(0).toUpperCase() + cleanSlug.slice(1)
 
+  const canonicalCategory = cleanSlug === 'earth' ? 'climate'
+    : (cleanSlug === 'politics' || cleanSlug === 'policy' || cleanSlug === 'congress') ? 'political'
+    : (cleanSlug === 'culture') ? 'entertainment'
+    : (cleanSlug === 'sports') ? 'sport'
+    : cleanSlug
+
   let whereClause: Record<string, any> = {
     status: { equals: 'published' },
   }
 
-  if (cleanSlug === 'political') {
-    whereClause.or = [
-      { category: { equals: 'political' } },
-      { category: { equals: 'politics' } },
-      { category: { equals: 'policy' } },
-      { category: { equals: 'congress' } },
-    ]
-  } else if (cleanSlug === 'climate') {
-    whereClause.or = [
-      { category: { equals: 'climate' } },
-      { category: { equals: 'earth' } },
-    ]
-  } else if (cleanSlug === 'sport') {
-    whereClause.or = [
-      { category: { equals: 'sport' } },
-      { category: { equals: 'sports' } },
-    ]
-  } else if (cleanSlug === 'entertainment') {
-    whereClause.or = [
-      { category: { equals: 'entertainment' } },
-      { category: { equals: 'culture' } },
-    ]
-  } else if (cleanSlug === 'video') {
+  if (canonicalCategory === 'video') {
     whereClause.or = [
       { category: { equals: 'video' } },
       { isVideo: { equals: true } },
     ]
-  } else if (cleanSlug === 'world') {
+  } else if (canonicalCategory === 'world') {
     whereClause.or = [
       { category: { equals: 'world' } },
       { region: { equals: 'world' } },
@@ -80,7 +64,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
       { region: { equals: 'africa' } },
     ]
   } else {
-    whereClause.category = { equals: cleanSlug }
+    whereClause.category = { equals: canonicalCategory }
   }
 
   const [articlesRes, popularRes] = await Promise.all([
