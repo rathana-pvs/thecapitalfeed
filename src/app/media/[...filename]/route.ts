@@ -86,7 +86,7 @@ export async function GET(
         headers: {
           'Content-Type': 'image/svg+xml; charset=utf-8',
           'Content-Length': Buffer.byteLength(FALLBACK_SVG).toString(),
-          'Cache-Control': 'public, max-age=3600',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
         },
       })
     }
@@ -151,7 +151,7 @@ export async function HEAD(
         headers: {
           'Content-Type': 'image/svg+xml; charset=utf-8',
           'Content-Length': Buffer.byteLength(FALLBACK_SVG).toString(),
-          'Cache-Control': 'public, max-age=3600',
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
         },
       })
     }

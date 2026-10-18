@@ -108,6 +108,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                     alt={lead.coverImage?.alt || lead.title}
                     fill
                     priority
+                    unoptimized
                     sizes="(max-width: 700px) 100vw, 67vw"
                   />
                   {lead.isVideo && (
@@ -150,6 +151,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                           src={imgUrl}
                           alt={story.coverImage?.alt || story.title}
                           fill
+                          unoptimized
                           sizes="(max-width: 700px) 120px, 210px"
                         />
                       </Link>
