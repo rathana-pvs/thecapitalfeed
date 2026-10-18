@@ -38,32 +38,63 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const cleanSlug = slug.toLowerCase()
   const categoryName = cleanSlug.charAt(0).toUpperCase() + cleanSlug.slice(1)
 
-  const allArticlesRes = await getArticles({ limit: 40 })
-  const allArticles: Article[] = (allArticlesRes.docs && allArticlesRes.docs.length > 0)
-    ? (allArticlesRes.docs as Article[])
-    : mockArticles
+  let whereClause: Record<string, any> = {
+    status: { equals: 'published' },
+  }
 
-  const categoryArticles = allArticles.filter((a) => {
-    if (!a.category) return false
-    if (typeof a.category === 'string') {
-      const cVal = a.category.toLowerCase()
-      return (
-        cVal === cleanSlug ||
-        (cleanSlug === 'political' && (cVal === 'politics' || cVal === 'policy' || cVal === 'congress')) ||
-        (cleanSlug === 'climate' && cVal === 'earth') ||
-        (cleanSlug === 'sport' && cVal === 'sports') ||
-        (cleanSlug === 'entertainment' && cVal === 'culture')
-      )
-    }
-    if (typeof a.category === 'object') {
-      const cSlug = a.category.slug?.toLowerCase() || ''
-      const cName = a.category.name?.toLowerCase() || ''
-      return cSlug === cleanSlug || cName === cleanSlug || cSlug.includes(cleanSlug)
-    }
-    return false
-  })
+  if (cleanSlug === 'political') {
+    whereClause.or = [
+      { category: { equals: 'political' } },
+      { category: { equals: 'politics' } },
+      { category: { equals: 'policy' } },
+      { category: { equals: 'congress' } },
+    ]
+  } else if (cleanSlug === 'climate') {
+    whereClause.or = [
+      { category: { equals: 'climate' } },
+      { category: { equals: 'earth' } },
+    ]
+  } else if (cleanSlug === 'sport') {
+    whereClause.or = [
+      { category: { equals: 'sport' } },
+      { category: { equals: 'sports' } },
+    ]
+  } else if (cleanSlug === 'entertainment') {
+    whereClause.or = [
+      { category: { equals: 'entertainment' } },
+      { category: { equals: 'culture' } },
+    ]
+  } else if (cleanSlug === 'video') {
+    whereClause.or = [
+      { category: { equals: 'video' } },
+      { isVideo: { equals: true } },
+    ]
+  } else if (cleanSlug === 'world') {
+    whereClause.or = [
+      { category: { equals: 'world' } },
+      { region: { equals: 'world' } },
+      { region: { equals: 'europe' } },
+      { region: { equals: 'asia' } },
+      { region: { equals: 'middle-east' } },
+      { region: { equals: 'latin-america' } },
+      { region: { equals: 'africa' } },
+    ]
+  } else {
+    whereClause.category = { equals: cleanSlug }
+  }
 
-  const articles = categoryArticles.length > 0 ? categoryArticles : allArticles
+  const [articlesRes, popularRes] = await Promise.all([
+    getArticles({
+      limit: 30,
+      where: whereClause,
+    }),
+    getArticles({
+      limit: 6,
+    }),
+  ])
+
+  const articles: Article[] = (articlesRes.docs || []) as Article[]
+  const popularArticles: Article[] = (popularRes.docs || []) as Article[]
   const lead = articles[0]
   const supporting = articles.slice(1, 4)
   const feed = articles.slice(4, 15)
@@ -149,7 +180,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                 )
               })}
             </section>
-            <MostRead articles={allArticles} />
+            <MostRead articles={popularArticles.length > 0 ? popularArticles : articles} />
           </div>
         </>
       )}

@@ -30,30 +30,30 @@ const isBuildTime =
   !process.env.DATABASE_URI || 
   process.env.DATABASE_URI.includes('placeholder')
 
-const cachedGetArticles = unstable_cache(
-  async (params?: {
-    limit?: number
-    page?: number
-    where?: Record<string, any>
-  }): Promise<PaginatedArticles> => {
-    try {
-      const payload = await getPayloadClient()
-      
-      const whereClause: any = {
-        status: { equals: 'published' },
-        ...(params?.where || {}),
-      }
+async function fetchArticles(params?: {
+  limit?: number
+  page?: number
+  where?: Record<string, any>
+}): Promise<PaginatedArticles> {
+  try {
+    const payload = await getPayloadClient()
+    
+    const whereClause: any = {
+      status: { equals: 'published' },
+      ...(params?.where || {}),
+    }
 
-      const result = await payload.find({
-        collection: 'articles',
-        limit: params?.limit || 12,
-        page: params?.page || 1,
-        where: whereClause,
-        depth: 2,
-        sort: '-publishedAt',
-      })
+    const result = await payload.find({
+      collection: 'articles',
+      limit: params?.limit || 12,
+      page: params?.page || 1,
+      where: whereClause,
+      depth: 2,
+      sort: '-publishedAt',
+    })
 
-      if (!result.docs || result.docs.length === 0) {
+    if (!result.docs || result.docs.length === 0) {
+      if (!params?.where) {
         return {
           docs: mockArticles.slice(0, params?.limit || 12),
           totalDocs: mockArticles.length,
@@ -67,17 +67,31 @@ const cachedGetArticles = unstable_cache(
           nextPage: null,
         } as unknown as PaginatedArticles
       }
+      return {
+        docs: [],
+        totalDocs: 0,
+        limit: params?.limit || 12,
+        totalPages: 0,
+        page: params?.page || 1,
+        pagingCounter: 1,
+        hasPrevPage: false,
+        hasNextPage: false,
+        prevPage: null,
+        nextPage: null,
+      } as unknown as PaginatedArticles
+    }
 
-      const docs = result.docs.map((doc: any) => {
-        if (doc.coverImage && typeof doc.coverImage === 'object') {
-          doc.coverImage.url = normalizeImageUrl(doc.coverImage.url)
-        }
-        return doc
-      })
+    const docs = result.docs.map((doc: any) => {
+      if (doc.coverImage && typeof doc.coverImage === 'object') {
+        doc.coverImage.url = normalizeImageUrl(doc.coverImage.url)
+      }
+      return doc
+    })
 
-      return { ...result, docs } as unknown as PaginatedArticles
-    } catch (error) {
-      console.warn('⚠️ Postgres connection failed in getArticles (expected during build):', error instanceof Error ? error.message : error)
+    return { ...result, docs } as unknown as PaginatedArticles
+  } catch (error) {
+    console.warn('⚠️ Postgres connection failed in getArticles (expected during build):', error instanceof Error ? error.message : error)
+    if (!params?.where) {
       return {
         docs: mockArticles.slice(0, params?.limit || 12),
         totalDocs: mockArticles.length,
@@ -91,10 +105,20 @@ const cachedGetArticles = unstable_cache(
         nextPage: null,
       } as unknown as PaginatedArticles
     }
-  },
-  ['articles-list'],
-  { tags: ['articles'] }
-)
+    return {
+      docs: [],
+      totalDocs: 0,
+      limit: params?.limit || 12,
+      totalPages: 0,
+      page: params?.page || 1,
+      pagingCounter: 1,
+      hasPrevPage: false,
+      hasNextPage: false,
+      prevPage: null,
+      nextPage: null,
+    } as unknown as PaginatedArticles
+  }
+}
 
 export async function getArticles(params?: {
   limit?: number
@@ -115,7 +139,12 @@ export async function getArticles(params?: {
       nextPage: null,
     } as unknown as PaginatedArticles
   }
-  return cachedGetArticles(params)
+  const keyPart = `articles-${params?.limit || 12}-${params?.page || 1}-${JSON.stringify(params?.where || {})}`
+  return unstable_cache(
+    () => fetchArticles(params),
+    ['articles-list', keyPart],
+    { tags: ['articles'], revalidate: 60 }
+  )()
 }
 
 export async function getArticle(slug: string): Promise<Article | null> {
