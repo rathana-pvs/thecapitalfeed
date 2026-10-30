@@ -2,25 +2,16 @@ import { NextResponse } from 'next/server'
 
 export async function GET() {
   const pubId = process.env.NEXT_PUBLIC_ADSENSE_PUB_ID || 'pub-2441454515104767'
-  const content = `mgid.com, 995119, DIRECT, d4c29acad76ce94f
-google.com, ${pubId}, RESELLER, f08c47fec0942fa0
-google.com, ${pubId}, DIRECT, f08c47fec0942fa0
-rubiconproject.com, 9655, RESELLER, 0bfd66d529a55807
-appnexus.com, 15825, RESELLER, f5ab79cb980f11d1
+  const content = `google.com, ${pubId}, DIRECT, f08c47fec0942fa0
 smartadserver.com, 4577, RESELLER, 060d053dcf45cbf3
-themediagrid.com, YZ2I83, DIRECT, 9fac4a4a87c2a44f
-pubmatic.com, 168313, RESELLER, 5d62403b186f2ace
-sharethrough.com, 4577, RESELLER, d53b998a7bd4ecd2
-media.net, 8CUTQ396X, DIRECT, 818f58666cabc936
-rubiconproject.com, 19396, RESELLER, 0bfd66d529a55807
-smaato.com, 1100059563, RESELLER, 07bcf65f187117b4
-pubmatic.com, 161673, RESELLER, 5d62403b186f2ace
+improvedigital.com, 1944, RESELLER
+onetag.com, 7cd9d7c7c13ff36, DIRECT
 lijit.com, 349013, DIRECT, fafdf38b16bf6b2b
-amxrtb.com, 105199704, DIRECT
-sharethrough.com, a6a34444, RESELLER, d53b998a7bd4ecd2
-onetag.com, 7cd9d7c7c13ff36, RESELLER
-inmobi.com, c2391dc8a51e420480044992fe6dc4d7, RESELLER, 83e75a7ae333ca9d
-gamoshi.io, 267-b6491, DIRECT, 20e30b2ae1f670f2
+pubmatic.com, 161673, RESELLER, 5d62403b186f2ace
+rubiconproject.com, 25188, RESELLER, 0bfd66d529a55807
+openx.com, 539074103, RESELLER, 6a698e2ec38604c6
+adingo.jp, 31164, RESELLER
+google.com, ${pubId}, RESELLER, f08c47fec0942fa0
 `
   return new NextResponse(content, {
     headers: {
