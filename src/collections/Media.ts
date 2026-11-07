@@ -26,7 +26,8 @@ export const Media: CollectionConfig = {
   slug: 'media',
   upload: {
     staticDir: mediaDir,
-    mimeTypes: ['image/*', 'video/*'],
+    // SVG is deliberately excluded: it can carry script and is served from the admin origin.
+    mimeTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif', 'video/*'],
     adminThumbnail: ({ doc }: any) => {
       if (doc?.source === 'external' && doc?.externalUrl) return doc.externalUrl
       if (doc?.externalUrl) return doc.externalUrl

@@ -65,7 +65,8 @@ export const Articles: CollectionConfig = {
       async ({ doc }) => {
         try {
           // Clear all cached article queries (unstable_cache queries tagged with 'articles')
-          revalidateTag('articles')
+          // Next 16: expire immediately (same as the old single-arg behaviour)
+          revalidateTag('articles', { expire: 0 })
 
           // 🔥 Warm the cache immediately — fire-and-forget background fetches
           // so pages are pre-built before the first real visitor arrives

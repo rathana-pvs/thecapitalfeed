@@ -8,7 +8,7 @@ const PUBLIC_ADMIN_ROUTES = [
   '/admin/reset',
 ]
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
 
   if (pathname.startsWith('/admin')) {

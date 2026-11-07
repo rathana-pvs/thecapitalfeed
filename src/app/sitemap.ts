@@ -15,6 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { docs: articles } = await payload.find({
     collection: 'articles',
     limit: 1000,
+    where: { status: { equals: 'published' } },
     select: {
       slug: true,
       updatedAt: true,

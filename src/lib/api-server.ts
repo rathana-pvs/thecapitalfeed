@@ -157,7 +157,10 @@ export async function getArticle(slug: string): Promise<Article | null> {
         const payload = await getPayloadClient()
         const result = await payload.find({
           collection: 'articles',
-          where: { slug: { equals: slug } },
+          where: {
+            slug: { equals: slug },
+            status: { equals: 'published' },
+          },
           limit: 1,
           depth: 2,
         })

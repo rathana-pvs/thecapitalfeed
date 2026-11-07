@@ -16,6 +16,17 @@ const MIME_MAP: Record<string, string> = {
   '.pdf': 'application/pdf',
 }
 
+// Uploaded files are served from the site's own origin (same as /admin), so a
+// malicious SVG/HTML file must never be able to run script here. A sandboxed CSP
+// is ignored when the file is used via <img>, but blocks script when the file is
+// opened directly as a document.
+const SAFE_MEDIA_HEADERS = {
+  'Content-Security-Policy': "default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; sandbox",
+  'X-Content-Type-Options': 'nosniff',
+}
+
+const isInside = (dir: string, target: string) => target === dir || target.startsWith(dir + path.sep)
+
 const getMediaDirectory = () => {
   if (process.env.PAYLOAD_MEDIA_DIR) {
     return path.resolve(process.env.PAYLOAD_MEDIA_DIR)
@@ -64,7 +75,7 @@ export async function GET(
   let filePath = path.resolve(baseDir, rawFilename)
 
   // Security check: prevent directory traversal
-  if (!filePath.startsWith(baseDir)) {
+  if (!isInside(baseDir, filePath)) {
     return new NextResponse('Forbidden', { status: 403 })
   }
 
@@ -72,7 +83,7 @@ export async function GET(
   if (!fs.existsSync(filePath)) {
     const altDir = path.resolve(process.cwd(), 'public/media')
     const altPath = path.resolve(altDir, rawFilename)
-    if (altPath.startsWith(altDir) && fs.existsSync(altPath)) {
+    if (isInside(altDir, altPath) && fs.existsSync(altPath)) {
       filePath = altPath
     }
   }
@@ -84,6 +95,7 @@ export async function GET(
       return new NextResponse(FALLBACK_SVG, {
         status: 200,
         headers: {
+          ...SAFE_MEDIA_HEADERS,
           'Content-Type': 'image/svg+xml; charset=utf-8',
           'Content-Length': Buffer.byteLength(FALLBACK_SVG).toString(),
           'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -106,6 +118,7 @@ export async function GET(
     return new NextResponse(fileBuffer, {
       status: 200,
       headers: {
+        ...SAFE_MEDIA_HEADERS,
         'Content-Type': contentType,
         'Content-Length': stats.size.toString(),
         'Cache-Control': 'public, max-age=31536000, immutable',
@@ -130,14 +143,14 @@ export async function HEAD(
   const baseDir = getMediaDirectory()
   let filePath = path.resolve(baseDir, rawFilename)
 
-  if (!filePath.startsWith(baseDir)) {
+  if (!isInside(baseDir, filePath)) {
     return new NextResponse(null, { status: 403 })
   }
 
   if (!fs.existsSync(filePath)) {
     const altDir = path.resolve(process.cwd(), 'public/media')
     const altPath = path.resolve(altDir, rawFilename)
-    if (altPath.startsWith(altDir) && fs.existsSync(altPath)) {
+    if (isInside(altDir, altPath) && fs.existsSync(altPath)) {
       filePath = altPath
     }
   }
@@ -149,6 +162,7 @@ export async function HEAD(
       return new NextResponse(null, {
         status: 200,
         headers: {
+          ...SAFE_MEDIA_HEADERS,
           'Content-Type': 'image/svg+xml; charset=utf-8',
           'Content-Length': Buffer.byteLength(FALLBACK_SVG).toString(),
           'Cache-Control': 'no-cache, no-store, must-revalidate',
@@ -165,6 +179,7 @@ export async function HEAD(
   return new NextResponse(null, {
     status: 200,
     headers: {
+      ...SAFE_MEDIA_HEADERS,
       'Content-Type': contentType,
       'Content-Length': stats.size.toString(),
       'Cache-Control': 'public, max-age=31536000, immutable',
