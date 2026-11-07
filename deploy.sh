@@ -12,20 +12,39 @@ echo -e "${GREEN}🚀 Deploying The Capital Feed...${NC}"
 echo "📥 Pulling latest code..."
 git pull origin main || { echo -e "${RED}❌ Error: git pull failed.${NC}"; exit 1; }
 
+# ── Protect uploads during the build ───────────────────────────────
+# `next build` wipes .next/standalone. If .next/standalone/public/media is a
+# symlink, that cleanup can follow it and delete the real uploads (this
+# happened on 2026-11-07). Mirror the uploads first, then drop the link
+# before building; it is recreated after the build.
+MEDIA_DIR=/var/www/thecapitalfeed/public/media
+MEDIA_MIRROR=/root/backups/thecapitalfeed-media-mirror
+mkdir -p "$MEDIA_DIR" "$MEDIA_MIRROR"
+cp -a --update=none "$MEDIA_DIR"/. "$MEDIA_MIRROR"/ 2>/dev/null || true
+MEDIA_COUNT_BEFORE=$(ls -A "$MEDIA_DIR" | wc -l)
+if [ -L .next/standalone/public/media ]; then rm .next/standalone/public/media; fi
+
 # 2. Build production Next.js app
 echo "🔨 Building production Next.js app..."
 NODE_OPTIONS="--max-old-space-size=1536" npm run build
 
-# Ensure root public/media exists persistently
-mkdir -p public/media
-
-# Ensure standalone public folder exists and copy static assets
+# Uploads live in $MEDIA_DIR. Link the build's media folder to it.
+# Rescue anything that ended up in a real standalone media dir before replacing it.
+if [ -d .next/standalone/public/media ] && [ ! -L .next/standalone/public/media ]; then
+  cp -a --update=none .next/standalone/public/media/. "$MEDIA_DIR"/ 2>/dev/null || true
+  rm -rf .next/standalone/public/media
+fi
 mkdir -p .next/standalone/public
-cp -rn public/* .next/standalone/public/ 2>/dev/null || true
+(cd public && find . -mindepth 1 -maxdepth 1 ! -name media -exec cp -rn {} ../.next/standalone/public/ \;) 2>/dev/null || true
+ln -sfn "$MEDIA_DIR" .next/standalone/public/media
 
-# Symlink standalone media directly to persistent root media directory
-rm -rf .next/standalone/public/media
-ln -sfn "$(pwd)/public/media" .next/standalone/public/media
+# Safety net: if any uploads disappeared during the build, restore them from the mirror
+if [ "$(ls -A "$MEDIA_DIR" | wc -l)" -lt "$MEDIA_COUNT_BEFORE" ]; then
+  echo -e "${RED}⚠️ Media files went missing during build — restoring from $MEDIA_MIRROR${NC}"
+  cp -a --update=none "$MEDIA_MIRROR"/. "$MEDIA_DIR"/
+fi
+[ -L .next/standalone/public/media ] || { echo -e "${RED}❌ media link missing${NC}"; exit 1; }
+echo "🖼️  Media files: $(ls -A "$MEDIA_DIR" | wc -l) (before build: $MEDIA_COUNT_BEFORE)"
 
 cp -rn .next/static .next/standalone/.next/ 2>/dev/null || true
 
