@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
+import { getMediaDirectory } from '@/lib/media-dir'
 
 const MIME_MAP: Record<string, string> = {
   '.jpg': 'image/jpeg',
@@ -27,16 +28,6 @@ const SAFE_MEDIA_HEADERS = {
 
 const isInside = (dir: string, target: string) => target === dir || target.startsWith(dir + path.sep)
 
-const getMediaDirectory = () => {
-  if (process.env.PAYLOAD_MEDIA_DIR) {
-    return path.resolve(process.env.PAYLOAD_MEDIA_DIR)
-  }
-  const cwd = process.cwd()
-  if (cwd.includes('.next')) {
-    return path.resolve(cwd.split('.next')[0], 'public/media')
-  }
-  return path.resolve(cwd, 'public/media')
-}
 
 const FALLBACK_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500" fill="none">
   <defs>
@@ -79,14 +70,6 @@ export async function GET(
     return new NextResponse('Forbidden', { status: 403 })
   }
 
-  // If not found in primary baseDir, check secondary relative cwd
-  if (!fs.existsSync(filePath)) {
-    const altDir = path.resolve(process.cwd(), 'public/media')
-    const altPath = path.resolve(altDir, rawFilename)
-    if (isInside(altDir, altPath) && fs.existsSync(altPath)) {
-      filePath = altPath
-    }
-  }
 
   if (!fs.existsSync(filePath)) {
     const ext = path.extname(rawFilename).toLowerCase()
@@ -147,13 +130,6 @@ export async function HEAD(
     return new NextResponse(null, { status: 403 })
   }
 
-  if (!fs.existsSync(filePath)) {
-    const altDir = path.resolve(process.cwd(), 'public/media')
-    const altPath = path.resolve(altDir, rawFilename)
-    if (isInside(altDir, altPath) && fs.existsSync(altPath)) {
-      filePath = altPath
-    }
-  }
 
   if (!fs.existsSync(filePath)) {
     const ext = path.extname(rawFilename).toLowerCase()
